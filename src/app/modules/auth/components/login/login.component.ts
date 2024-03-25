@@ -5,7 +5,7 @@ import { first } from 'rxjs/operators';
 import { UserModel } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { URL_FROTEND } from 'src/app/config/config';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +15,8 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent implements OnInit, OnDestroy {
   // KeenThemes mock, change it to:
   defaultAuth: any = {
-    email: 'admin@demo.com',
-    password: 'demo',
+    email: 'saul@gmail.com',
+    password: '12345678',
   };
   loginForm: FormGroup;
   hasError: boolean;
@@ -30,8 +30,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router,
-    private toastr: ToastrService,
+    private router: Router
   ) {
     this.isLoading$ = this.authService.isLoading$;
     // redirect to home if already logged in
@@ -45,10 +44,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     // get return url from route parameters or default to '/'
     this.returnUrl =
       this.route.snapshot.queryParams['returnUrl'.toString()] || '/';
-
-      // this.toastr.error("Validacion","El icono es obligatoria");
-      // this.toastr.success("Validacion","El icono es obligatoria");
-      // this.toastr.info("Validacion","El icono es obligatoria");
   }
 
   // convenience getter for easy access to form fields
@@ -82,13 +77,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.hasError = false;
     const loginSubscr = this.authService
       .login(this.f.email.value, this.f.password.value)
-      .pipe(first())
-      .subscribe((user: UserModel | undefined) => {
+      // .pipe(first())
+      .subscribe((user: any) => {
         if (user) {
-          this.router.navigate([this.returnUrl]);
+          location.href = URL_FROTEND + "/dashboard";
         } else {
           this.hasError = true;
         }
+        console.log(user);
       });
     this.unsubscribe.push(loginSubscr);
   }

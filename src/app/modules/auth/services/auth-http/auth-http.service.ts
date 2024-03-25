@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserModel } from '../../models/user.model';
-import { environment } from '../../../../../environments/environment';
 import { AuthModel } from '../../models/auth.model';
+import { URL_SERVICIOS } from 'src/app/config/config';
 
-const API_USERS_URL = `${environment.apiUrl}/auth`;
+const API_USERS_URL = `${URL_SERVICIOS}/auth`;
 
 @Injectable({
   providedIn: 'root',
