@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../services/user.service';
@@ -9,6 +9,9 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./user-add.component.scss']
 })
 export class UserAddComponent implements OnInit {
+
+  @Output() UserC: EventEmitter<any> = new EventEmitter();
+
   name: any = null;
   surname: any = null;
   email: any = null;
@@ -61,13 +64,17 @@ export class UserAddComponent implements OnInit {
     formData.append("surname", this.surname);
     formData.append("email", this.email);
     formData.append("password", this.password);
+    formData.append("state", '1');
     formData.append("role_id", '1');
     formData.append("type_user", '2');
     formData.append("image", this.file_avatar);
     this.userService.register(formData).subscribe(
       (res: any) => {
-      console.log(res);
-    },
+        this.UserC.emit(res.user);
+        console.log(res);
+        console.log(formData.get("image"));
+        this.modal.dismiss();
+      },
       (error) => {
         console.error(error);
         this.toaster.error('Ha ocurrido un error. Por favor, inténtalo de nuevo.', 'Error');

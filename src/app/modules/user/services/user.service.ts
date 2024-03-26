@@ -20,12 +20,48 @@ export class UserService {
     this.isLoading$ = this.isLoadingSubject.asObservable();
   }
 
-  register(data: any) {
+  listUsers(search: any, state: any) {
     this.isLoadingSubject.next(true);
-    let headers = new HttpHeaders({'Authorization': 'Bearer' + this.authservice.token});
-    let URL = URL_SERVICIOS + "/users";
-    return this.http.post(URL, data, {headers: headers}).pipe(
+    let headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.authservice.token });
+    let link = "?T=";
+    if (search) {
+      link += "&search=" + search;
+    }
+    if (state) {
+      link += "&state=" + state;
+    }
+    let URL = URL_SERVICIOS + "/users" + link;
+    return this.http.get(URL, { headers: headers }).pipe(
       finalize(() => this.isLoadingSubject.next(false))
     );
   }
-}
+
+  register(data: any) {
+    console.log(data);
+    this.isLoadingSubject.next(true);
+    let headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.authservice.token });
+    let URL = URL_SERVICIOS + "/users";
+    return this.http.post(URL, data, { headers: headers }).pipe(
+      finalize(() => this.isLoadingSubject.next(false))
+    );
+  }
+
+  update(data: any, user_id: string): Observable<any> {
+    console.log(data);
+    this.isLoadingSubject.next(true);
+    let headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.authservice.token });
+    let URL = URL_SERVICIOS + "/users/" + user_id;
+    return this.http.post(URL, data, { headers: headers }).pipe(
+      finalize(() => this.isLoadingSubject.next(false))
+    );
+  }
+
+  delete(user_id: string) {
+    this.isLoadingSubject.next(true);
+    let headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.authservice.token });
+    let URL = URL_SERVICIOS + "/users/" + user_id;
+    return this.http.delete(URL, { headers: headers }).pipe(
+      finalize(() => this.isLoadingSubject.next(false))
+    );
+  }
+} 
