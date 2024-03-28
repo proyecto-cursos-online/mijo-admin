@@ -67,7 +67,7 @@
                 transform="rotate(-90 11.364 20.364)" fill="currentColor" />
               <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor" />
             </svg>
-          </span>Add User</button>
+          </span>Nuevo</button>
       </div>
       <div class="d-flex justify-content-end align-items-center d-none" data-kt-user-table-toolbar="selected">
         <div class="fw-bolder me-5">
@@ -168,7 +168,7 @@
             <!--begin::Modal header-->
             <div class="modal-header" id="kt_modal_add_user_header">
               <!--begin::Modal title-->
-              <h2 class="fw-bolder">Add User</h2>
+              <h2 class="fw-bolder">Nuevo Usuario</h2>
               <!--end::Modal title-->
               <!--begin::Close-->
               <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-users-modal-action="close">
@@ -416,7 +416,7 @@
           </td>
         </tr>
         <ng-container *ngFor="let user of users">
-          <tr>
+          <tr *ngIf="!(isLoading | async)">
             <td>
               <div class="form-check form-check-sm form-check-custom form-check-solid">
                 <input class="form-check-input" type="checkbox" value="1" />
@@ -425,7 +425,7 @@
             <td class="d-flex align-items-center">
               <!--begin:: Avatar -->
               <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                <a href="../../demo1/dist/apps/user-management/users/view.html">
+                <a target="_blank" [href]="user.avatar">
                   <div class="symbol-label">
                     <img [src]="user.avatar" alt="Imagen" class="w-100" />
                   </div>

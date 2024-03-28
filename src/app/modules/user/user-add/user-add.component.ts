@@ -64,7 +64,6 @@ export class UserAddComponent implements OnInit {
     formData.append("surname", this.surname);
     formData.append("email", this.email);
     formData.append("password", this.password);
-    formData.append("state", '1');
     formData.append("role_id", '1');
     formData.append("type_user", '2');
     formData.append("image", this.file_avatar);

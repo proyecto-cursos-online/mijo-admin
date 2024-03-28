@@ -4,6 +4,7 @@ import { UserAddComponent } from '../user-add/user-add.component';
 import { UserService } from '../services/user.service';
 import { UserEditComponent } from '../user-edit/user-edit.component';
 import { UserDeleteComponent } from '../user-delete/user-delete.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-list',
@@ -19,7 +20,8 @@ export class UserListComponent implements OnInit {
 
   constructor(
     public modalService: NgbModal,
-    public userService: UserService
+    public userService: UserService,
+    private toaster: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -45,7 +47,16 @@ export class UserListComponent implements OnInit {
     this.userService.listUsers(this.search, this.state).subscribe((res: any) => {
       this.users = res.users.data;
       console.log(this.users);
-    });
+      if (!this.users || this.users.length === 0) {
+        this.toaster.info('No se encontraron datos en la búsqueda', 'Espera');
+      }
+    },
+      (error) => {
+        // Manejar los errores de la solicitud
+        console.error(error);
+        this.toaster.error('Ocurrió un problema en el servidor', 'Error');
+      }
+    );
   }
 
   editUser(user: any) {
@@ -62,8 +73,7 @@ export class UserListComponent implements OnInit {
     const modalRef = this.modalService.open(UserDeleteComponent, { centered: true, size: 'md', scrollable: true });
     modalRef.componentInstance.user = user;
     modalRef.componentInstance.UserD.subscribe((userRes: any) => {
-      console.log(userRes);
-      let index = this.users.findIndex((item: any) => item.id == userRes.id);
+      let index = this.users.findIndex((item: any) => item.id == user.id);
       this.users.splice(index, 1)
     });
   }
