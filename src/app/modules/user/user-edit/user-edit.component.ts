@@ -15,6 +15,8 @@ export class UserEditComponent implements OnInit {
 
   name: any = null;
   surname: any = null;
+  profession: any = null;
+  description: any = null;
   email: any = null;
   password: any = null;
   state: any = 1;
@@ -36,6 +38,10 @@ export class UserEditComponent implements OnInit {
     this.email = this.user.email;
     this.state = this.user.state;
     this.image_prev = this.user.avatar;
+    if (this.user.instructor) {
+      this.profession = this.user.instructor.profession;
+      this.description = this.user.instructor.description;
+    }
   }
 
   processAvatar($event: any) {

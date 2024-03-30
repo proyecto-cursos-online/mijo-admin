@@ -12,7 +12,7 @@
           </svg>
         </span>
         <input [(ngModel)]="search" (keyup.enter)="listUser()" type="text" data-kt-user-table-filter="search"
-          class="form-control form-control-solid w-250px ps-14" placeholder="Search user" />
+          class="form-control form-control-solid w-250px ps-14" placeholder="Buscar" />
       </div>
     </div>
     <div class="card-toolbar">
@@ -31,7 +31,7 @@
             <div class="fs-5 text-dark fw-bolder">Opciones</div>
           </div>
           <div class="separator border-gray-200"></div>
-          <div class="px-7 py-5" >
+          <div class="px-7 py-5">
             <div class="mb-10">
               <label class="form-label fs-6 fw-bold">Estado:</label>
               <select name="state" [(ngModel)]="state" class="form-select form-select-solid fw-bolder">
@@ -41,7 +41,8 @@
               </select>
             </div>
             <div class="d-flex justify-content-end">
-              <button (click)="clearFilters()" type="button" class="btn btn-light btn-active-light-primary fw-bold me-2 px-6">Limpiar</button>
+              <button (click)="clearFilters()" type="button"
+                class="btn btn-light btn-active-light-primary fw-bold me-2 px-6">Limpiar</button>
               <button (click)="listUser()" type="button" class="btn btn-primary fw-bold px-6">Aplicar</button>
             </div>
           </div>
@@ -397,11 +398,9 @@
                 data-kt-check-target="#kt_table_users .form-check-input" value="1" />
             </div>
           </th>
-          <th class="min-w-125px">Imagen</th>
-          <th class="min-w-125px">Nombres y Apellidos</th>
+          <th class="min-w-125px">Usuario</th>
           <th class="min-w-125px">Rol</th>
           <th class="min-w-125px">Estado</th>
-          <th class="min-w-125px">Correo Electrónico</th>
           <th class="min-w-125px">Fecha de Cración</th>
           <th class="min-w-100px">Acciones</th>
         </tr>
@@ -423,25 +422,28 @@
               </div>
             </td>
             <td class="d-flex align-items-center">
-              <!--begin:: Avatar -->
               <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
                 <a target="_blank" [href]="user.avatar">
                   <div class="symbol-label">
-                    <img [src]="user.avatar" alt="Imagen" class="w-100" />
+                    <img [src]="user.avatar" alt="Imagen" class="w-100">
                   </div>
                 </a>
               </div>
+              <div class="d-flex flex-column">
+                <a href="../../demo1/dist/apps/user-management/users/view.html"
+                  class="text-gray-800 text-hover-primary mb-1">{{ user.name + " " + user.surname }}</a>
+                <span>{{ user.email }}</span>
+              </div>
             </td>
-            <td>{{ user.name + " " + user.surname}}</td>
             <td>
-              <div class="badge badge-danger fw-bolder">{{ user.role.name }}</div>
+              <span class="badge badge-light-primary fs-7 m-1">{{ user.role.name }}</span>
             </td>
             <td>
-              <div [ngClass]="user.state == 1 ? 'badge-success' : 'badge-danger'" class="badge fw-bolder">{{ user.state
+              <div [ngClass]="user.state == 1 ? 'badge-light-success' : 'badge-light-danger'" class="badge">{{
+                user.state
                 == 1 ?
                 'Activo' : 'Inactivo' }}</div>
             </td>
-            <td>{{ user.email }}</td>
             <td>{{ user.created_at }}</td>
             <td>
               <div class="d-flex justify-content-start flex-shrink-0">

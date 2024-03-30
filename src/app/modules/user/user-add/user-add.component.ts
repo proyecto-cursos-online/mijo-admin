@@ -12,8 +12,11 @@ export class UserAddComponent implements OnInit {
 
   @Output() UserC: EventEmitter<any> = new EventEmitter();
 
+  type_user: any = 1;
   name: any = null;
   surname: any = null;
+  profession: any = null;
+  description: any = null;
   email: any = null;
   password: any = null;
   confirm_password: any = null;
@@ -66,6 +69,14 @@ export class UserAddComponent implements OnInit {
     formData.append("password", this.password);
     formData.append("role_id", '1');
     formData.append("type_user", '2');
+    if (this.type_user == 2) {
+      if (!this.profession) {
+        this.toaster.error('Ingrese datos correctos', 'Error de registro');
+        return;
+      }
+      formData.append("profession", this.profession);
+      formData.append("description", this.description);
+    }
     formData.append("image", this.file_avatar);
     this.userService.register(formData).subscribe(
       (res: any) => {
