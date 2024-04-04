@@ -9,6 +9,7 @@
   <!--begin::Form-->
   <form id="kt_project_settings_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
     <!--begin::Card body-->
+    <span class="spinner-border spinner-border-sm align-middle ms-2" *ngIf="isLoading | async"></span>
     <div class="card-body p-9">
 
       <div class="row mb-8">
@@ -37,8 +38,12 @@
               class="form-control form-select-solid dw-bolder"
               name="categorie"
               placeholder="Selec. Categoria"
+              (change)="selectCategorie($event)"
             >
-            <option value="">Todos</option>
+            <ng-container *ngFor="let category of categories">
+              <option [value]="category.id">{{ category.name }}</option>
+            </ng-container>
+            
           </select>
         </div>
         <div class="col-4">
@@ -48,7 +53,10 @@
               name="subcategorie"
               placeholder="Selec. Subcategoria"
             >
-            <option value="">Todos</option>
+            <ng-container *ngFor="let subcategory of subcategories_back">
+              <option [value]="subcategory.id">{{ subcategory.name }}</option>
+            </ng-container>
+            
           </select>
         </div>
       </div>
@@ -92,7 +100,10 @@
               name="user"
               placeholder="Selec. Instructor"
             >
-            <option value="Lalo">Lalo</option>
+            <ng-container *ngForm="let instructor of instructores">
+              <option [value]="instructor.id">{{ instructor.full_name }}</option>
+            </ng-container>
+
           </select>
         </div>
       </div>
