@@ -15,8 +15,8 @@ import { URL_FROTEND } from 'src/app/config/config';
 export class LoginComponent implements OnInit, OnDestroy {
   // KeenThemes mock, change it to:
   defaultAuth: any = {
-    email: 'saul@gmail.com',
-    password: '12345678',
+    email: 'admin@admin.com',
+    password: 'admin2024',
   };
   loginForm: FormGroup;
   hasError: boolean;
