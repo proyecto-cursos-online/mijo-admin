@@ -24,7 +24,9 @@
 @import "bootstrap/scss/utilities";
 
 // 3rd-Party plugins variables
+@import "./core/vendors/plugins/select2"; //agregado
 @import "./core/vendors/plugins/variables";
+@import "./core/components/tooltip";
 @import "./core/vendors/plugins/variables-dark";
 
 // Custom layout variables
