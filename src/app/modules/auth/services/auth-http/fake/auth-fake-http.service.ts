@@ -6,9 +6,9 @@ import { map } from 'rxjs/operators';
 import { UserModel } from '../../../models/user.model';
 import { AuthModel } from '../../../models/auth.model';
 import { UsersTable } from '../../../../../_fake/users.table';
-import { URL_SERVICIOS } from 'src/app/config/config';
+import { environment } from '../../../../../../environments/environment';
 
-const API_USERS_URL = `${URL_SERVICIOS}/users`;
+const API_USERS_URL = `${environment.apiUrl}/users`;
 
 @Injectable({
   providedIn: 'root',

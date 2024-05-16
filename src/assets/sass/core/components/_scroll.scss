@@ -15,28 +15,18 @@
         scrollbar-width: thin;
 
         // Webkit
-        &::-webkit-scrollbar {            
-            width: var(--#{$prefix}scrollbar-size);
-            height: var(--#{$prefix}scrollbar-size);
-        }
-
-        ::-webkit-scrollbar-track {
-           background-color: transparent;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            @include border-radius(var(--#{$prefix}scrollbar-size));
+        &::-webkit-scrollbar {
+            width: get($scrollbar, width);
+            height: get($scrollbar, height);
         }
 
         // Default color
-        @include scrollbar-color(var(--#{$prefix}scrollbar-color), var(--#{$prefix}scrollbar-hover-color));
+        @include scrollbar-color(get($scrollbar, color), get($scrollbar, hover-color));
     }
 }
 
-// Scroll
-.scroll,
-.hover-scroll,
-.hover-scroll-overlay {
+// Overflow scroll
+.scroll {
     overflow: scroll;
     position: relative;
 
@@ -46,9 +36,7 @@
     }
 }
 
-.scroll-x,
-.hover-scroll-x,
-.hover-scroll-overlay-x {
+.scroll-x {
     overflow-x: scroll;
     position: relative;
 
@@ -58,9 +46,7 @@
     }
 }
 
-.scroll-y,
-.hover-scroll-y,
-.hover-scroll-overlay-y {
+.scroll-y {
     overflow-y: scroll;
     position: relative;
 
@@ -70,50 +56,148 @@
     }
 }
 
-.hover-scroll,
-.hover-scroll-overlay,
-.hover-scroll-x,
-.hover-scroll-overlay-x,
-.hover-scroll-y,
-.hover-scroll-overlay-y {
-    @include scrollbar-color(transparent, var(--#{$prefix}scrollbar-color));
-}
+// Hover overflow scroll
+.hover-scroll {
+    position: relative;
 
-// Utilities
-@each $breakpoint in map-keys($grid-breakpoints) {
-    @include media-breakpoint-up($breakpoint) {
-        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    // Desktop mode
+    @include media-breakpoint-up(lg) {
+        overflow: hidden;
 
-        .scroll#{$infix}-ps {
-            padding-left: var(--#{$prefix}scrollbar-size) !important;
+        border-right: get($scrollbar, width) solid transparent;
+        border-bottom: get($scrollbar, height) solid transparent;
+        margin-right: -#{get($scrollbar, width)};
+        margin-bottom: -#{get($scrollbar, height)};
+
+        &:hover {
+            overflow: scroll;
+            border-right: 0;
+            border-bottom: 0;
         }
 
-        .scroll#{$infix}-ms {
-            margin-left: var(--#{$prefix}scrollbar-size) !important;
+        // Firefox hack
+        @-moz-document url-prefix() {
+            overflow: scroll;
+            position: relative;
+            border-right: 0;
+            border-bottom: 0;
         }
+    }
 
-        .scroll#{$infix}-mb {
-            margin-bottom: var(--#{$prefix}scrollbar-size) !important;
-        }
-
-        .scroll#{$infix}-pe {
-            padding-right: var(--#{$prefix}scrollbar-size) !important;
-        }
-
-        .scroll#{$infix}-me {
-            margin-right: var(--#{$prefix}scrollbar-size) !important;
-        }
-
-        .scroll#{$infix}-px {
-            padding-left: var(--#{$prefix}scrollbar-size) !important;
-            padding-right: var(--#{$prefix}scrollbar-size) !important;
-        }
-
-        .scroll#{$infix}-mx {
-            margin-left: var(--#{$prefix}scrollbar-size) !important;
-            margin-right: var(--#{$prefix}scrollbar-size) !important;
-        }
+    // Tablet & mobile modes
+    @include media-breakpoint-down(lg) {
+        overflow: auto;
     }
 }
 
-  
+// Hover overflow scroll y
+.hover-scroll-y {
+    position: relative;
+
+    // Desktop mode
+    @include media-breakpoint-up(lg) {
+        overflow-y: hidden;
+        border-right: get($scrollbar, width) solid transparent;
+        margin-right: -#{get($scrollbar, width)};
+
+        &:hover {
+            overflow-y: scroll;
+            border-right: 0;
+        }
+
+        // Firefox hack
+        @-moz-document url-prefix() {
+            overflow-y: scroll;
+            position: relative;
+            border-right: 0;
+        }
+    }
+
+    // Tablet & mobile modes
+    @include media-breakpoint-down(lg) {
+        overflow-y: auto;
+    }
+}
+
+// Hover overflow scroll x
+.hover-scroll-x {
+    position: relative;
+
+    // Desktop mode
+    @include media-breakpoint-up(lg) {
+        overflow-x: hidden;
+        border-bottom: get($scrollbar, height) solid transparent;
+
+        &:hover {
+            overflow-x: scroll;
+            border-bottom: 0;
+        }
+
+        // Firefox hack
+        @-moz-document url-prefix() {
+            overflow-x: scroll;
+            position: relative;
+            border-bottom: 0;
+        }
+    }
+
+    // Tablet & mobile modes
+    @include media-breakpoint-down(lg) {
+        overflow-x: auto;
+    }
+}
+
+// Hover overflow overlay
+.hover-scroll-overlay-y {
+    overflow-y: hidden;
+    position: relative;
+
+    --scrollbar-space: #{get($scrollbar, space)};
+
+    // Webkit
+    &::-webkit-scrollbar {
+        width: calc(#{get($scrollbar, width)} + var(--scrollbar-space));
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-clip: content-box;
+        border-right: var(--scrollbar-space) solid transparent;
+    }
+
+    &:hover {
+        overflow-y: overlay;
+    }
+
+    // Firefox hack
+    @-moz-document url-prefix() {
+        overflow-y: scroll;
+        position: relative;
+    }
+}
+
+// Utility classes
+.scroll-ps {
+    padding-left: get($scrollbar, width) !important;
+}
+
+.scroll-ms {
+    margin-left: get($scrollbar, width) !important;
+}
+
+.scroll-pe {
+    padding-right: get($scrollbar, width) !important;
+}
+
+.scroll-me {
+    margin-right: get($scrollbar, width) !important;
+}
+
+.scroll-px {
+    padding-left: get($scrollbar, width) !important;
+    padding-right: get($scrollbar, width) !important;
+}
+
+.scroll-mx {
+    margin-left: get($scrollbar, width) !important;
+    margin-right: get($scrollbar, width) !important;
+}

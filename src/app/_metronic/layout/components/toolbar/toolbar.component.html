@@ -1,27 +1,49 @@
-<!--begin::Toolbar container-->
-<div id="kt_app_toolbar_container" class="app-container" [ngClass]="appToolbarContainerCSSClass">
-  <ng-container *ngIf="showPageTitle()">
-    <app-page-title [appPageTitleDirection]="appPageTitleDirection" [appPageTitleBreadcrumb]="appPageTitleBreadcrumb"
-      [appPageTitleDescription]="appPageTitleDescription" class="page-title d-flex flex-wrap me-3"
-      [ngClass]="{'flex-column justify-content-center': appPageTitleDirection === 'column', 'align-items-center': appPageTitleDirection !== 'column', appPageTitleCSSClass}">
-    </app-page-title>
-  </ng-container>
+<div
+  id="kt_toolbar_container"
+  [ngClass]="toolbarContainerCssClasses"
+  class="d-flex flex-stack"
+>
+  <app-page-title
+    #ktPageTitle
+    class="page-title d-flex"
+    [ngClass]="pageTitleCssClasses"
+  ></app-page-title>
+  <!-- begin::Actions  -->
+  <div class="d-flex align-items-center py-1">
+    <!-- begin::Wrapper  -->
+    <div class="me-4">
+      <!-- begin::Menu  -->
+      <a
+        class="
+          btn btn-sm btn-flex btn-light btn-active-primary
+          fw-bolder
+          cursor-pointer
+        "
+        data-kt-menu-trigger="click"
+        data-kt-menu-placement="bottom-end"
+        data-kt-menu-flip="top-end"
+      >
+        <span
+          [inlineSVG]="'./assets/media/icons/duotune/general/gen031.svg'"
+          class="svg-icon svg-icon-5 svg-icon-gray-500 me-1"
+        ></span>
+        Filter
+      </a>
 
-  <ng-container *ngIf="appToolbarLayout === 'classic'">
-    <app-classic class="d-flex align-items-center gap-2 gap-lg-3"></app-classic>
-  </ng-container>
-  <ng-container *ngIf="appToolbarLayout === 'accounting'">
-    <app-accounting class="d-flex align-items-center me-5"></app-accounting>
-  </ng-container>
-  <ng-container *ngIf="appToolbarLayout === 'extended'">
-    <app-extended class="d-flex align-items-center flex-shrink-0 me-5"></app-extended>
-  </ng-container>
-  <ng-container *ngIf="appToolbarLayout === 'reports'">
-    <app-reports class="d-flex align-items-center overflow-auto" [appPageTitleDisplay]="appPageTitleDisplay">
-    </app-reports>
-  </ng-container>
-  <ng-container *ngIf="appToolbarLayout === 'saas'">
-    <app-saas class="d-flex align-items-center gap-2" [appPageTitleDisplay]="appPageTitleDisplay"></app-saas>
-  </ng-container>
+      <!-- end::Menu  -->
+    </div>
+    <!-- end::Wrapper  -->
+
+    <!-- begin::Button  -->
+    <a
+      class="btn btn-sm btn-primary cursor-pointer"
+      data-bs-toggle="modal"
+      data-bs-target="#kt_modal_create_app"
+      id="kt_toolbar_primary_button"
+    >
+      Create
+    </a>
+    <!-- end::Button  -->
+  </div>
+  <!-- end::Actions  -->
 </div>
-<!--end::Toolbar container-->

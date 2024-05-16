@@ -25,7 +25,7 @@ export class StatsWidget4Component implements OnInit {
     this.height = 150;
     this.labelColor = getCSSVariableValue('--bs-gray-800');
     this.baseColor = getCSSVariableValue('--bs-' + this.color);
-    this.lightColor = getCSSVariableValue('--bs-' + this.color + '-light');
+    this.lightColor = getCSSVariableValue('--bs-light-' + this.color);
     this.chartOptions = getChartOptions(
       this.height,
       this.labelColor,

@@ -14,17 +14,13 @@ export class MixedWidget8Component implements OnInit {
   ngOnInit(): void {
     this.chartOptions = getChartOptions(this.chartHeight, this.chartColor);
   }
-
-  refreshCharts() {
-    return getChartOptions(this.chartHeight, this.chartColor);
-  }
 }
 
 function getChartOptions(chartHeight: string, chartColor: string) {
   const labelColor = getCSSVariableValue('--bs-gray-800');
   const strokeColor = getCSSVariableValue('--bs-gray-300');
   const baseColor = getCSSVariableValue('--bs-' + chartColor);
-  const lightColor = getCSSVariableValue('--bs-' + chartColor + '-light');
+  const lightColor = getCSSVariableValue('--bs-light-' + chartColor);
 
   return {
     series: [
@@ -55,10 +51,6 @@ function getChartOptions(chartHeight: string, chartColor: string) {
       enabled: false,
     },
     fill: {
-      type: 'solid',
-      opacity: 1,
-    },
-    fill1: {
       type: 'gradient',
       opacity: 1,
       gradient: {
@@ -69,7 +61,6 @@ function getChartOptions(chartHeight: string, chartColor: string) {
         opacityFrom: 1,
         opacityTo: 0.375,
         stops: [25, 50, 100],
-        colorStops: [],
       },
     },
     stroke: {
@@ -103,12 +94,7 @@ function getChartOptions(chartHeight: string, chartColor: string) {
         },
       },
       tooltip: {
-        enabled: true,
-        formatter: undefined,
-        offsetY: 0,
-        style: {
-          fontSize: '12px',
-        },
+        enabled: false,
       },
     },
     yaxis: {
@@ -148,7 +134,7 @@ function getChartOptions(chartHeight: string, chartColor: string) {
         fontSize: '12px',
       },
       y: {
-        formatter: function (val: any) {
+        formatter: function (val: number) {
           return '$' + val + ' thousands';
         },
       },
@@ -156,8 +142,7 @@ function getChartOptions(chartHeight: string, chartColor: string) {
     colors: [lightColor],
     markers: {
       colors: [lightColor],
-      // @ts-ignore
-      strokeColor: [baseColor],
+      strokeColors: [baseColor],
       strokeWidth: 3,
     },
   };

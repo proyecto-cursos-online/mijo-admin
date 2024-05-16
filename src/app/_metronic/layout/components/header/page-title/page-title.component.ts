@@ -1,5 +1,6 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import { LayoutService } from '../../../core/layout.service';
 import { PageInfoService, PageLink } from '../../../core/page-info.service';
 
 @Component({
@@ -8,21 +9,29 @@ import { PageInfoService, PageLink } from '../../../core/page-info.service';
 })
 export class PageTitleComponent implements OnInit, OnDestroy {
   private unsubscribe: Subscription[] = [];
-
-  @Input() appPageTitleDirection: string = '';
-  @Input() appPageTitleBreadcrumb: boolean;
-  @Input() appPageTitleDescription: boolean;
-
+  showTitle: boolean = true;
+  showBC: boolean = true;
   title$: Observable<string>;
   description$: Observable<string>;
   bc$: Observable<Array<PageLink>>;
+  pageTitleCssClass: string = '';
+  pageTitleDirection: string = 'row';
 
-  constructor(private pageInfo: PageInfoService) {}
+  constructor(
+    private pageInfo: PageInfoService,
+    private layout: LayoutService
+  ) {}
 
   ngOnInit(): void {
     this.title$ = this.pageInfo.title.asObservable();
     this.description$ = this.pageInfo.description.asObservable();
     this.bc$ = this.pageInfo.breadcrumbs.asObservable();
+    this.showTitle = this.layout.getProp('pageTitle.display') as boolean;
+    this.showBC = this.layout.getProp('pageTitle.breadCrumbs') as boolean;
+    this.pageTitleCssClass = this.layout.getStringCSSClasses('pageTitle');
+    this.pageTitleDirection = this.layout.getProp(
+      'pageTitle.direction'
+    ) as string;
   }
 
   ngOnDestroy() {

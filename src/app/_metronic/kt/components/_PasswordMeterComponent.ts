@@ -192,7 +192,7 @@ class PasswordMeterComponent {
 
   public check() {
     let score = 0
-    const checkScore = this.getCheckScore()
+    const checkScore = this.checkScore()
     if (this.checkLength()) {
       score = score + checkScore
     }
@@ -221,11 +221,13 @@ class PasswordMeterComponent {
   public static getInstance = (
     el: HTMLElement,
     componentName: string = defaultPasswordMeterQueires.componentName
-  ): PasswordMeterComponent | undefined  => {
+  ) => {
     const passwordMeter = DataUtil.get(el, componentName)
     if (passwordMeter) {
-      return passwordMeter as PasswordMeterComponent
+      return passwordMeter
     }
+
+    return null
   }
 
   public static createInstances = (

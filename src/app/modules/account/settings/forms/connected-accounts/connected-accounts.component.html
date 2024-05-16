@@ -25,7 +25,10 @@
           p-6
         "
       >
-        <app-keenicon name="design-frame" class="fs-2 text-primary me-4"></app-keenicon>
+        <span
+          [inlineSVG]="'./assets/media/icons/duotune/art/art006.svg'"
+          class="svg-icon svg-icon-2tx svg-icon-primary me-4"
+        ></span>
         <div class="d-flex flex-stack flex-grow-1">
           <div class="fw-bold">
             <div class="fs-6 text-gray-600">
@@ -48,10 +51,10 @@
             />
 
             <div class="d-flex flex-column">
-              <a href="#" class="fs-5 text-gray-900 text-hover-primary fw-bolder">
+              <a href="#" class="fs-5 text-dark text-hover-primary fw-bolder">
                 Google
               </a>
-              <div class="fs-6 fw-bold text-gray-500">
+              <div class="fs-6 fw-bold text-gray-400">
                 Plan properly your workflow
               </div>
             </div>
@@ -80,10 +83,10 @@
             />
 
             <div class="d-flex flex-column">
-              <a href="#" class="fs-5 text-gray-900 text-hover-primary fw-bolder">
+              <a href="#" class="fs-5 text-dark text-hover-primary fw-bolder">
                 Github
               </a>
-              <div class="fs-6 fw-bold text-gray-500">
+              <div class="fs-6 fw-bold text-gray-400">
                 Keep eye on on your Repositories
               </div>
             </div>
@@ -111,10 +114,10 @@
             />
 
             <div class="d-flex flex-column">
-              <a href="#" class="fs-5 text-gray-900 text-hover-primary fw-bolder">
+              <a href="#" class="fs-5 text-dark text-hover-primary fw-bolder">
                 Slack
               </a>
-              <div class="fs-6 fw-bold text-gray-500">
+              <div class="fs-6 fw-bold text-gray-400">
                 Integrate Projects Discussions
               </div>
             </div>
@@ -134,7 +137,7 @@
     </div>
 
     <div class="card-footer d-flex justify-content-end py-6 px-9">
-      <button type="button" class="btn btn-light btn-active-light-primary me-2">
+      <button type="button" class="btn btn-white btn-active-light-primary me-2">
         Discard
       </button>
       <button type="button" (click)="saveSettings()" class="btn btn-primary">

@@ -34,7 +34,6 @@ class StickyComponent {
   instanceUid: string
   instanceName: string | null = ''
   attributeName: string
-  attributeName2: string
   eventTriggerState: boolean
   lastScrollTop: number
 
@@ -44,7 +43,6 @@ class StickyComponent {
     this.instanceUid = getUniqueIdWithPrefix('sticky')
     this.instanceName = this.element.getAttribute('data-kt-sticky-name')
     this.attributeName = 'data-kt-sticky-' + this.instanceName
-    this.attributeName2 = 'data-kt-' + this.instanceName
     this.eventTriggerState = true
     this.lastScrollTop = 0
 
@@ -80,7 +78,6 @@ class StickyComponent {
         if (document.body.hasAttribute(this.attributeName) === false) {
           this.enable()
           document.body.setAttribute(this.attributeName, 'on')
-          document.body.setAttribute(this.attributeName2, 'on')
         }
 
         if (this.eventTriggerState === true) {
@@ -94,7 +91,6 @@ class StickyComponent {
         if (document.body.hasAttribute(this.attributeName)) {
           this.disable()
           document.body.removeAttribute(this.attributeName)
-          document.body.removeAttribute(this.attributeName2)
         }
 
         if (this.eventTriggerState === false) {
@@ -114,7 +110,6 @@ class StickyComponent {
       if (document.body.hasAttribute(this.attributeName) === false) {
         this.enable()
         document.body.setAttribute(this.attributeName, 'on')
-        document.body.setAttribute(this.attributeName2, 'on')
       }
 
       if (this.eventTriggerState === true) {
@@ -127,7 +122,6 @@ class StickyComponent {
       if (document.body.hasAttribute(this.attributeName) === true) {
         this.disable()
         document.body.removeAttribute(this.attributeName)
-        document.body.removeAttribute(this.attributeName2)
       }
 
       if (this.eventTriggerState === false) {
@@ -215,10 +209,8 @@ class StickyComponent {
     if (document.body.hasAttribute(this.attributeName) === true) {
       this.disable()
       document.body.removeAttribute(this.attributeName)
-      document.body.removeAttribute(this.attributeName2)
       this.enable(true)
       document.body.setAttribute(this.attributeName, 'on')
-      document.body.setAttribute(this.attributeName2, 'on')
     }
   }
 
@@ -231,8 +223,8 @@ class StickyComponent {
     return EventHandlerUtil.one(this.element, name, callback)
   }
 
-  public off = (name: string, handlerId: string) => {
-    return EventHandlerUtil.off(this.element, name, handlerId)
+  public off = (name: string) => {
+    return EventHandlerUtil.off(this.element, name)
   }
 
   public trigger = (name: string) => {
@@ -244,12 +236,9 @@ class StickyComponent {
     return DataUtil.has(element, 'sticky')
   }
 
-  public static getInstance(element: HTMLElement): StickyComponent | undefined {
+  public static getInstance(element: HTMLElement) {
     if (element !== null && StickyComponent.hasInstace(element)) {
-      const data = DataUtil.get(element, 'sticky')
-      if (data) {
-        return data as StickyComponent
-      }
+      return DataUtil.get(element, 'sticky')
     }
   }
 

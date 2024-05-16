@@ -5,16 +5,16 @@
 .separator {
     display: block;
     height: 0;
-    border-bottom: 1px solid var(--#{$prefix}border-color);
+    border-bottom: 1px solid $border-color;
 
     &.separator-dotted {
         border-bottom-style: dotted;
-        border-bottom-color: var(--#{$prefix}border-dashed-color);
+        border-bottom-color: $border-dashed-color;
     }
 
     &.separator-dashed {
         border-bottom-style: dashed;
-        border-bottom-color: var(--#{$prefix}border-dashed-color);
+        border-bottom-color: $border-dashed-color;
     }
 
     &.separator-content {
@@ -27,7 +27,7 @@
         &::after {
             content: " ";
             width: 50%;
-            border-bottom: 1px solid var(--#{$prefix}border-color);
+            border-bottom: 1px solid $border-color;
         }
 
         &::before{
@@ -42,7 +42,7 @@
             &::before,
             &::after {
                 border-bottom-style: dotted;
-                border-bottom-color: var(--#{$prefix}border-dashed-color);
+                border-bottom-color: $border-dashed-color;
             }
         }
 
@@ -50,7 +50,7 @@
             &::before,
             &::after {
                 border-bottom-style: dashed;
-                border-bottom-color: var(--#{$prefix}border-dashed-color);
+                border-bottom-color: $border-dashed-color;
             }
         }
 

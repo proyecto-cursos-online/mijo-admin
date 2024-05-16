@@ -13,11 +13,6 @@ import {
   DropdownMenusModule,
   WidgetsModule,
 } from '../../_metronic/partials';
-import { SharedModule } from "../../_metronic/shared/shared.module";
-import { CKEditorModule } from 'ckeditor4-angular';
-import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,13 +30,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DropdownMenusModule,
     WidgetsModule,
     CardsModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule,
-    
-    CKEditorModule,
-    NgbPaginationModule,
-    NgMultiSelectDropDownModule.forRoot()
   ],
 })
 export class ProfileModule {}

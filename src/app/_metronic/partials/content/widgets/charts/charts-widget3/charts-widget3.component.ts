@@ -19,7 +19,7 @@ function getChartOptions(height: number) {
   const labelColor = getCSSVariableValue('--bs-gray-500');
   const borderColor = getCSSVariableValue('--bs-gray-200');
   const baseColor = getCSSVariableValue('--bs-info');
-  const lightColor = getCSSVariableValue('--bs-info-light');
+  const lightColor = getCSSVariableValue('--bs-light-info');
 
   return {
     series: [

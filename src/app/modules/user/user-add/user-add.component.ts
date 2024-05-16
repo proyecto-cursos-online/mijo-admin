@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ToastrService } from 'ngx-toastr';
-import { UserService } from '../services/user.service';
+import { Toaster } from 'ngx-toast-notifications';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-user-add',
@@ -9,58 +9,45 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./user-add.component.scss']
 })
 export class UserAddComponent implements OnInit {
-
-  @Output() UserC: EventEmitter<any> = new EventEmitter();
-
-  type_user: any = 1;
+  @Output() UserA:EventEmitter<any> = new EventEmitter()
   name: any = null;
   surname: any = null;
-  profession: any = null;
-  description: any = null;
   email: any = null;
   password: any = null;
-  confirm_password: any = null;
-  image_prev: any = "./assets/media/avatars/300-6.jpg";
-  file_avatar: any = null;
-  isLoading: any;
+  repit_password: any = null;
+  IMAGEN_PREV: any = 'assets/media/avatars/300-6.jpg';
+  FILE_AVATAR: any = 'null'
 
+  isLoading:any;
   constructor(
+    public toaster: Toaster,
+    public modal: NgbActiveModal,
     public userService: UserService,
-    private toaster: ToastrService,
-    public modal: NgbActiveModal
   ) { }
 
   ngOnInit(): void {
     this.isLoading = this.userService.isLoading$;
   }
-
   processAvatar($event: any) {
-    const file = $event.target.files[0];
-    if (!file.type.startsWith("image/")) {
-      this.toaster.error('Solamente se aceptan imágenes', 'Error de validación');
+    if ($event.target.files[0].type.indexOf("image") < 0) {
+      this.toaster.open({ text: 'Solamente Imagenes', caption: 'Alerta', type: 'danger' })
       return;
     }
-    this.file_avatar = $event.target.files[0];
-    let reader = new FileReader();
-    reader.readAsDataURL(this.file_avatar);
-    reader.onloadend = () => this.image_prev = reader.result;
+    this.FILE_AVATAR = $event.target.files[0];
+    let reader = new FileReader;
+    reader.readAsDataURL(this.FILE_AVATAR);
+    reader.onloadend = () => this.IMAGEN_PREV = reader.result;
   }
-
-  save() {
-    if (
-      !this.name ||
+  store() {
+    if (!this.name ||
       !this.surname ||
       !this.email ||
-      !this.password ||
-      !this.confirm_password ||
-      !this.file_avatar
-    ) {
-      this.toaster.error('Ingrese datos correctos', 'Error de registro');
-      return;
-    }
-    if (this.password != this.confirm_password) {
-      this.toaster.error('Las contraseñas son incorrectas', 'Error de registro');
-      return;
+      !this.password || !this.repit_password) {
+        this.toaster.open({text:"Todos los campos son requeridos",caption:'Validaciones', type:"danger"});
+        return;
+    };
+    if (this.password != this.repit_password) {
+      this.toaster.open({text:"Las Contraseñas no coinciden",caption:'Validaciones', type:"danger"})
     }
     let formData = new FormData();
     formData.append("name", this.name);
@@ -68,27 +55,14 @@ export class UserAddComponent implements OnInit {
     formData.append("email", this.email);
     formData.append("password", this.password);
     formData.append("role_id", '1');
+    formData.append("state", '1');
     formData.append("type_user", '2');
-    if (this.type_user == 2) {
-      if (!this.profession) {
-        this.toaster.error('Ingrese datos correctos', 'Error de registro');
-        return;
-      }
-      formData.append("profession", this.profession);
-      formData.append("description", this.description);
-    }
-    formData.append("image", this.file_avatar);
-    this.userService.register(formData).subscribe(
-      (res: any) => {
-        this.UserC.emit(res.user);
-        console.log(res);
-        console.log(formData.get("image"));
-        this.modal.dismiss();
-      },
-      (error) => {
-        console.error(error);
-        this.toaster.error('Ha ocurrido un error. Por favor, inténtalo de nuevo.', 'Error');
-      }
-    );
+    formData.append("imagen", this.FILE_AVATAR);
+
+    this.userService.register(formData).subscribe((resp:any)=>{
+      this.toaster.open({text:"Usuario Creado Correctamente",caption:'Exitoso', type:"primary"});
+      this.UserA.emit(resp.user);
+      this.modal.close();
+    });
   }
 }

@@ -1,11 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { ICreateAccount, inits } from '../create-account.helper';
 @Component({
   selector: 'app-horizontal',
   templateUrl: './horizontal.component.html',
 })
-export class HorizontalComponent implements OnInit, OnDestroy {
+export class HorizontalComponent implements OnInit {
   formsCount = 5;
   account$: BehaviorSubject<ICreateAccount> =
     new BehaviorSubject<ICreateAccount>(inits);

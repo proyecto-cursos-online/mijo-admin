@@ -1,7 +1,7 @@
 export class DataUtil {
-  static store: Map<HTMLElement, Map<string, unknown>> = new Map()
+  static store: Map<HTMLElement, Map<string, any>> = new Map()
 
-  public static set(instance: HTMLElement | undefined, key: string, data: unknown): void {
+  public static set(instance: HTMLElement | undefined, key: string, data: any): void {
     if (!instance) {
       return
     }
@@ -16,7 +16,7 @@ export class DataUtil {
     instanceData.set(key, data)
   }
 
-  public static get(instance: HTMLElement, key: string): unknown | undefined {
+  public static get(instance: HTMLElement, key: string): any | undefined {
     const instanceData = DataUtil.store.get(instance)
     if (!instanceData) {
       return
@@ -32,21 +32,6 @@ export class DataUtil {
     }
 
     instanceData.delete(key)
-  }
-
-  public static removeOne(instance: HTMLElement, key: string, eventId: string) {
-    const instanceData = DataUtil.store.get(instance)
-    if (!instanceData) {
-      return
-    }
-
-    const eventsIds = instanceData.get(key)
-    if (!eventsIds) {
-      return
-    }
-
-    const updateEventsIds = (eventsIds as string[]).filter((f) => f !== eventId)
-    DataUtil.set(instance, key, updateEventsIds)
   }
 
   public static has(instance: HTMLElement, key: string): boolean {

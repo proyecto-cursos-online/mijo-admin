@@ -1,13 +1,13 @@
 <div
   class="d-flex flex-column bgi-no-repeat rounded-top"
-  [style.background-image]="'url(./assets/media/misc/menu-header-bg.jpg)'"
+  [style.background-image]="'url(./assets/media/misc/pattern-1.jpg)'"
 >
   <h3 class="text-white fw-bold px-9 mt-10 mb-6">
     Notifications <span class="fs-8 opacity-75 ps-3">24 reports</span>
   </h3>
 
   <ul class="nav nav-line-tabs nav-line-tabs-2x nav-stretch fw-bold px-9">
-    <li class ="nav-item">
+    <li class="nav-item">
       <a
         class="
           nav-link
@@ -74,7 +74,7 @@
             <span class="symbol-label" [ngClass]="'bg-light-' + alert.state">
               <span
                 [inlineSVG]="'./assets/media/' + alert.icon"
-                class="svg-icon fs-2"
+                class="svg-icon svg-icon-2"
                 [ngClass]="'svg-icon-' + alert.state"
               ></span>
             </span>
@@ -84,7 +84,7 @@
             <a href="#" class="fs-6 text-gray-800 text-hover-primary fw-bolder">
               {{ alert.title }}
             </a>
-            <div class="text-gray-500 fs-7">{{ alert.description }}</div>
+            <div class="text-gray-400 fs-7">{{ alert.description }}</div>
           </div>
         </div>
 
@@ -98,7 +98,10 @@
         class="btn btn-color-gray-600 btn-active-color-primary"
       >
         View All
-        <app-keenicon name="arrow-right" class="fs-5"></app-keenicon>
+        <span
+          [inlineSVG]="'./assets/media/icons/duotune/arrows/arr064.svg'"
+          class="svg-icon svg-icon-5"
+        ></span>
       </a>
     </div>
   </div>
@@ -111,7 +114,7 @@
   >
     <div class="d-flex flex-column px-9">
       <div class="pt-10 pb-0">
-        <h3 class="text-gray-900 text-center fw-bolder">Get Pro Access</h3>
+        <h3 class="text-dark text-center fw-bolder">Get Pro Access</h3>
 
         <div class="text-center text-gray-600 fw-bold pt-1">
           Outlines keep you honest. They stoping you from amazing poorly about
@@ -169,7 +172,10 @@
         class="btn btn-color-gray-600 btn-active-color-primary"
       >
         View All
-        <app-keenicon name="arrow-right" class="fs-5"></app-keenicon>
+        <span
+          [inlineSVG]="'./assets/media/icons/duotune/arrows/arr064.svg'"
+          class="svg-icon svg-icon-5"
+        ></span>
       </a>
     </div>
   </div>

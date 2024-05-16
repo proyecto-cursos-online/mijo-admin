@@ -1,12 +1,15 @@
 <div class="d-flex flex-wrap flex-stack mb-6">
   <h3 class="fw-bolder my-2">
     My Documents
-    <span class="fs-6 text-gray-500 fw-bold ms-1">100+ resources</span>
+    <span class="fs-6 text-gray-400 fw-bold ms-1">100+ resources</span>
   </h3>
 
   <div class="d-flex my-2">
     <div class="d-flex align-items-center position-relative me-4">
-      <app-keenicon name="magnifier" class="fs-3 position-absolute ms-3"></app-keenicon>
+      <span
+        [inlineSVG]="'./assets/media/icons/duotune/general/gen021.svg'"
+        class="svg-icon svg-icon-3 position-absolute ms-3"
+      ></span>
       <input
         type="text"
         id="kt_filter_search"

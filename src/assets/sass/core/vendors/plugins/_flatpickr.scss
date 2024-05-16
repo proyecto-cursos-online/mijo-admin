@@ -16,8 +16,8 @@ $flatpickr-time-height: 46px;
     font-family: inherit;
     border: 0;
     border-radius: 0;
-	box-shadow: var(--#{$prefix}dropdown-box-shadow);
-    background-color: var(--#{$prefix}body-bg);
+	box-shadow: $dropdown-box-shadow;
+    background-color: $body-bg;
     @include border-radius($dropdown-border-radius);
 
     // Remow arrows
@@ -55,8 +55,8 @@ $flatpickr-time-height: 46px;
 .flatpickr-months {
     .flatpickr-month {
         background: transparent;
-        color: var(--#{$prefix}gray-600);
-        fill: var(--#{$prefix}gray-600);
+        color: $gray-600;
+        fill: $gray-600;
         height: 46px;
     }
 
@@ -69,16 +69,16 @@ $flatpickr-time-height: 46px;
         top: 1rem;        
 
         svg {
-            fill: var(--#{$prefix}gray-500);
+            fill: $gray-500;
             height: 13px;
             width: 13px;
         }
 
         &:hover {
-            background: var(--#{$prefix}gray-100);
+            background: $gray-100;
 
             svg {
-                fill: var(--#{$prefix}gray-700);
+                fill: $gray-700;
             }
         }
     }
@@ -100,7 +100,7 @@ $flatpickr-time-height: 46px;
 
 // Month selector
 .flatpickr-current-month {
-    font-weight: $font-weight-semibold;
+    font-weight: $font-weight-bold;
     color: inherit;   
 
     .numInputWrapper {
@@ -120,10 +120,10 @@ $flatpickr-time-height: 46px;
 
     .flatpickr-monthDropdown-months {
         border: 0 !important;
-        background-color: var(--#{$prefix}body-bg);
+        background-color: $body-bg;
         font-size: 1rem;
-        color: var(--#{$prefix}gray-700);
-        font-weight: $font-weight-semibold;
+        color: $gray-700;
+        font-weight: $font-weight-bold;
         padding: 0.5rem 0.75rem;
         margin-right: 0.5rem;
         outline: none !important;
@@ -133,13 +133,13 @@ $flatpickr-time-height: 46px;
         -webkit-appearance: none;
 
         &:hover {
-            background: var(--#{$prefix}gray-100);
+            background: $gray-100;
         }
     
         .flatpickr-monthDropdown-month {
             font-size: 1rem;
-            color: var(--#{$prefix}gray-700);
-            font-weight: $font-weight-semibold;
+            color: $gray-700;
+            font-weight: $font-weight-bold;
             background-color: transparent;
             outline: none;
             padding: 0;
@@ -147,29 +147,29 @@ $flatpickr-time-height: 46px;
     }
 
     span.cur-month {
-        color: var(--#{$prefix}gray-700);
+        color: $gray-700;
         font-size: 1rem;
-        font-weight: $font-weight-semibold;    
+        font-weight: $font-weight-bold;    
 
         &:hover {
-            background: var(--#{$prefix}gray-100);
+            background: $gray-100;
         }
     }
 
     input.cur-year {
-        color: var(--#{$prefix}gray-700);
-        font-size: 1.1rem !important;
+        color: $gray-700;
+        font-size: 1.1rem;
         padding: 0.5rem 0.75rem;
-        font-weight: $font-weight-semibold;
+        font-weight: $font-weight-bold;
         outline: 0 !important;
     }
 }
 
 // Week days
 span.flatpickr-weekday {
-    color: var(--#{$prefix}gray-800);
+    color: $gray-800;
     font-size: 1rem;
-    font-weight: $font-weight-bold;
+    font-weight: $font-weight-bolder;
 }
 
 // Time
@@ -180,7 +180,7 @@ span.flatpickr-weekday {
         height: height;
         line-height: height;
         max-height: height;
-        border-top: 1px solid var(--#{$prefix}gray-100);
+        border-top: 1px solid $gray-100;
     }
 
     .numInputWrapper {
@@ -188,17 +188,17 @@ span.flatpickr-weekday {
     }
 
     .flatpickr-am-pm {
-        color: var(--#{$prefix}gray-700);
+        color: $gray-700;
         font-size: 1rem;
-        font-weight: $font-weight-semibold;
+        font-weight: $font-weight-bold;
     }
 
     input {
         &.flatpickr-hour,
         &.flatpickr-minute {
-            color: var(--#{$prefix}gray-700);
+            color: $gray-700;
             font-size: 1rem;
-            font-weight: $font-weight-semibold;
+            font-weight: $font-weight-bold;
         }
     }
     
@@ -229,24 +229,24 @@ span.flatpickr-weekday {
 
         &.arrowUp {    
             &:after {
-                border-bottom-color: var(--#{$prefix}gray-500) !important;
+                border-bottom-color: $gray-500 !important;
             }
     
             &:hover {
                 &:after {
-                    border-bottom-color: var(--#{$prefix}gray-700) !important;
+                    border-bottom-color: $gray-700 !important;
                 }
             }
         }
     
         &.arrowDown {    
             &:after {
-                border-top-color: var(--#{$prefix}gray-500) !important;
+                border-top-color: $gray-500 !important;
             }
     
             &:hover {
                 &:after {
-                    border-top-color: var(--#{$prefix}gray-700) !important;
+                    border-top-color: $gray-700 !important;
                 }
             }
         }
@@ -267,7 +267,7 @@ span.flatpickr-weekday {
     max-width: 100% !important;
     margin: 0;
     line-height: $flatpickr-day-height;
-    color: var(--#{$prefix}gray-600);
+    color: $gray-600;
     margin-top: 0 !important;
 
     &.inRange,
@@ -284,22 +284,22 @@ span.flatpickr-weekday {
     &.nextMonthDay:focus {
         cursor: pointer;
         outline: 0;
-        background: var(--#{$prefix}component-hover-bg);
-        color: var(--#{$prefix}component-hover-color);
+        background: $component-hover-bg;
+        color: $component-hover-color;
         border-color: transparent;
     }
 
     // Today
     &.today {
-        background: var(--#{$prefix}gray-100);
-        color: var(--#{$prefix}gray-600);
+        background: $gray-100;
+        color: $gray-600;
         border-color: transparent;
 
         &:hover,
         &:focus {
             border-color: transparent;
-            background: var(--#{$prefix}gray-200);
-            color: var(--#{$prefix}gray-700);
+            background: $gray-200;
+            color: $gray-700;
         }
     }
 
@@ -322,8 +322,8 @@ span.flatpickr-weekday {
     &.selected.nextMonthDay,
     &.startRange.nextMonthDay,
     &.endRange.nextMonthDay {
-        background: var(--#{$prefix}component-active-bg);
-        color: var(--#{$prefix}component-active-color);;
+        background: $component-active-bg;
+        color: $component-active-color;;
         border-color: transparent;
     }
 
@@ -341,8 +341,8 @@ span.flatpickr-weekday {
     &.nextMonthDay:focus {
         cursor: pointer;
         outline: 0;
-        background: var(--#{$prefix}component-hover-bg);
-        color: var(--#{$prefix}component-hover-color);
+        background: $component-hover-bg;
+        color: $component-hover-color;
         border-color: transparent;
     }
 
@@ -354,8 +354,8 @@ span.flatpickr-weekday {
     &.today:hover,
     &.today:focus {
         border-color: transparent;
-        background: var(--#{$prefix}gray-100);
-        color: var(--#{$prefix}gray-600);
+        background: $gray-100;
+        color: $gray-600;
     }
 
     // Selected
@@ -377,8 +377,8 @@ span.flatpickr-weekday {
     &.selected.nextMonthDay,
     &.startRange.nextMonthDay,
     &.endRange.nextMonthDay {
-        background: var(--#{$prefix}component-active-bg);
-        color: var(--#{$prefix}component-active-color);;
+        background: $component-active-bg;
+        color: $component-active-color;;
         border-color: transparent;
     }
 
@@ -390,14 +390,14 @@ span.flatpickr-weekday {
     &.notAllowed,
     &.notAllowed.prevMonthDay,
     &.notAllowed.nextMonthDay {
-        color: var(--#{$prefix}gray-500);
+        color: $gray-400;
         background: transparent;
         border-color: transparent;
     }
     &.flatpickr-disabled,
     &.flatpickr-disabled:hover {
         cursor: not-allowed;
-        color: var(--#{$prefix}gray-500);
+        color: $gray-400;
     }
 }
 

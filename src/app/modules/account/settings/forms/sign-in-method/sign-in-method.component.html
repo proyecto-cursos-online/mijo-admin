@@ -65,7 +65,7 @@
                 ><button
                   id="kt_signin_cancel"
                   type="button"
-                  class="btn btn-color-gray-500 btn-active-light-primary px-6"
+                  class="btn btn-color-gray-400 btn-active-light-primary px-6"
                 >
                   Cancel
                 </button>
@@ -132,7 +132,7 @@
                 ><button
                   id="kt_signin_cancel"
                   type="button"
-                  class="btn btn-color-gray-500 btn-active-light-primary px-6"
+                  class="btn btn-color-gray-400 btn-active-light-primary px-6"
                   (click)="toggleEmailForm(false)"
                 >
                   Cancel
@@ -241,7 +241,7 @@
                 ><button
                   id="kt_password_cancel"
                   type="button"
-                  class="btn btn-color-gray-500 btn-active-light-primary px-6"
+                  class="btn btn-color-gray-400 btn-active-light-primary px-6"
                   (click)="togglePasswordForm(false)"
                 >
                   Cancel
@@ -267,7 +267,11 @@
           p-6
         "
       >
-        <app-keenicon name="shield-tick" class="fs-2 text-primary me-4"></app-keenicon>
+        <span
+          class="svg-icon svg-icon-2tx svg-icon-primary me-4"
+          [inlineSVG]="'./assets/media/icons/duotune/general/gen048.svg'"
+        >
+        </span>
         <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
           <div class="mb-3 mb-md-0 fw-bold">
             <h4 class="text-gray-800 fw-bolder">Secure Your Account</h4>

@@ -1,6 +1,6 @@
 <div class="pb-10 pb-lg-15">
-  <h2 class="fw-bolder text-gray-900">Billing Details</h2>
-  <div class="text-gray-500 fw-bold fs-6">
+  <h2 class="fw-bolder text-dark">Billing Details</h2>
+  <div class="text-gray-400 fw-bold fs-6">
     If you need more info, please check out
     <a href="#" class="text-primary fw-bolder">Help Page</a>.
   </div>
@@ -156,7 +156,10 @@
           CVV is required
         </div>
         <div class="position-absolute translate-middle-y top-50 end-0 me-3">
-          <app-keenicon name="credit-cart" class="fs-1"></app-keenicon>
+          <span
+            class="svg-icon svg-icon-2hx"
+            [inlineSVG]="'./assets/media/icons/duotune/finance/fin002.svg'"
+          ></span>
         </div>
       </div>
     </div>
@@ -166,7 +169,7 @@
       <label class="fs-6 fw-bold form-label"
         >Save Card for further billing?</label
       >
-      <div class="fs-7 fw-bold text-gray-500">
+      <div class="fs-7 fw-bold text-gray-400">
         If you need more info, please check budget planning
       </div>
     </div>
@@ -176,7 +179,7 @@
         class="form-check-input"
         type="checkbox"
         value="1"
-      /><span class="form-check-label fw-bold text-gray-500"
+      /><span class="form-check-label fw-bold text-gray-400"
         >Save Card</span
       ></label
     >

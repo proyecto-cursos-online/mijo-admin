@@ -2,174 +2,149 @@
 // Custom background helpers
 //
 
-// Background white color
-.bg-white {
-	--#{$prefix}bg-rgb-color: var(--#{$prefix}white-bg-rgb);
-	background-color: $white !important;
-}
-
-// Background black color
-.bg-black {
-	--#{$prefix}bg-rgb-color: var(--#{$prefix}black-bg-rgb);
-	background-color: $black !important;
-}
-
-// Background body color
-.bg-body {
-	--#{$prefix}bg-rgb-color: var(--#{$prefix}body-bg-rgb);
-	background-color: var(--#{$prefix}body-bg) !important;
-}
-
-.bg-hover-body {
-	cursor: pointer;
-
-	&:hover {
-		background-color: var(--#{$prefix}body-bg) !important;
-	}
-}
-
-.bg-active-body {
-	&.active {
-		background-color: var(--#{$prefix}body-bg) !important;
-	}
-}
-
-.bg-state-body {
-	cursor: pointer;
-
-	&.active,
-	&:hover {				
-		background-color: var(--#{$prefix}body-bg) !important;
-	}
-}
-
-.bg-hover-white {
-	cursor: pointer;
-
-	&:hover {
-		--#{$prefix}bg-rgb-color: var(--#{$prefix}white-bg-rgb);
-		background-color: $white !important;
-	}
-}
-
-.bg-active-white {
-	&.active {
-		--#{$prefix}bg-rgb-color: var(--#{$prefix}white-bg-rgb);
-		background-color: $white !important;
-	}
-}
-
-.bg-state-white {
-	cursor: pointer;
-
-	&.active,
-	&:hover {				
-		--#{$prefix}bg-rgb-color: var(--#{$prefix}white-bg-rgb);
-		background-color: $white !important;
-	}
-}
-
 // Background theme light colors
-@each $name, $value in $theme-colors {
-	@if (theme-light-color($name)) {
-		.bg-light-#{$name} {
-			background-color: var(--#{$prefix}#{$name}-light) !important;
+@each $color, $value in $theme-colors {
+	@if (theme-light-color($color)) {
+		.bg-light-#{$color} {
+			background-color: theme-light-color($color) !important;
+
+			&.hoverable:hover {
+				background-color: darken(theme-light-color($color), 6%) !important;
+			}
 		}
 	}
 
-	.bg-#{$name} {
-		--#{$prefix}bg-rgb-color: var(--#{$prefix}#{$name}-rgb);
-		background-color: var(--#{$prefix}#{$name}) !important;
+    .bg-#{$color} {
+		background-color: $value !important;
+		--bg-color: #{red($value)}, #{green($value)}, #{blue($value)} !important;
+
+        &.hoverable:hover {
+		   background-color: theme-active-color($color) !important;
+       }
 	}
 
-	.bg-#{$name}-active {
-		--#{$prefix}bg-rgb-color: var(--#{$prefix}#{$name}-active-rgb);
-		background-color: var(--#{$prefix}#{$name}-active) !important;
-	}
-
-	@if (theme-light-color($name)) {
-		.bg-hover-light-#{$name} {
+	@if (theme-light-color($color)) {
+		.bg-hover-light-#{$color} {
 			cursor: pointer;
 
 			&:hover {
-				background-color: var(--#{$prefix}#{$name}-light) !important;
+				background-color: theme-light-color($color) !important;
 			}
 		}
 
-		.bg-state-light-#{$name} {
+		.bg-state-light-#{$color} {
 			cursor: pointer;
 
 			&.active,
 			&:hover {				
-				background-color: var(--#{$prefix}#{$name}-light) !important;
+				background-color: theme-light-color($color) !important;
 			}
 		}
 	}
 
-	.bg-hover-#{$name} {
+	.bg-hover-#{$color} {
 		cursor: pointer;
 
 		&:hover {
-			background-color: var(--#{$prefix}#{$name}) !important;
+			--bg-color: #{red($value)}, #{green($value)}, #{blue($value)};
+			background-color: $value !important;
 		}
 	}
 
-	.bg-active-#{$name} {
+	.bg-active-#{$color} {
 		&.active {
-			background-color: var(--#{$prefix}#{$name}) !important;
+			--bg-color: #{red($value)}, #{green($value)}, #{blue($value)};
+			background-color: $value !important;
 		}
 	}
 
-	.bg-state-#{$name} {
+	.bg-state-#{$color} {
 		cursor: pointer;
 
 		&.active,
 		&:hover {				
-			background-color: var(--#{$prefix}#{$name}) !important;
+			--bg-color: #{red($value)}, #{green($value)}, #{blue($value)};
+			background-color: $value !important;
 		}
 	}
 }
 
 // Background gray colors
-@each $name, $value in $grays {
-    .bg-gray-#{$name} {
-		--#{$prefix}bg-rgb-color: var(--#{$prefix}gray-#{$name}-rgb);
-		background-color: var(--#{$prefix}gray-#{$name});
-	}
-
-	.bg-hover-gray-#{$name} {
-		&:hover {
-			--#{$prefix}bg-rgb-color: var(--#{$prefix}gray-#{$name}-rgb);
-			background-color: var(--#{$prefix}gray-#{$name});	
-		}		
-	}
-
-	.bg-gray-#{$name}i {
-		--#{$prefix}bg-rgb-color: var(--#{$prefix}gray-#{$name}-rgb);
-		background-color: var(--#{$prefix}gray-#{$name}) !important;
+@each $color, $value in $grays {
+    .bg-gray-#{$color} {
+		background-color: $value;
 	}
 }
 
 // Opacity
 @each $name, $value in $opacity-values {
 	.bg-opacity-#{$name} {
-		background-color: rgba(var(--#{$prefix}bg-rgb-color), #{$value}) !important;
+		background-color: rgba(var(--bg-color), #{$value}) !important;
 	}
 
 	.bg-hover-opacity-#{$name}:hover {
-		background-color: rgba(var(--#{$prefix}bg-rgb-color), #{$value}) !important;
+		background-color: rgba(var(--bg-color), #{$value}) !important;
 	}
 
 	.bg-active-opacity-#{$name}.active {
-		background-color: rgba(var(--#{$prefix}bg-rgb-color), #{$value}) !important;
+		background-color: rgba(var(--bg-color), #{$value}) !important;
 	}
 
 	.bg-state-opacity-#{$name} {
 		.active,
 		&:hover {
-			background-color: rgba(var(--#{$prefix}bg-rgb-color), #{$value}) !important;
+			background-color: rgba(var(--bg-color), #{$value}) !important;
 		}		
 	}
+}
+
+// Background black color
+.bg-black {
+	background-color: $black;
+}
+
+// Background body color
+.bg-body {
+	--bg-color: #{red($body-bg)}, #{green($body-bg)}, #{blue($body-bg)};
+	background-color: $body-bg;
+}
+
+// Lighten bg states
+.bg-lighten {
+	background-color: $lighten;
+}
+
+.bg-hover-lighten {
+	cursor: pointer;
+
+	&:hover {
+		background-color: $lighten;
+	}
+}
+
+.bg-active-lighten {
+	&.active {
+		background-color: $lighten;
+	}
+}
+
+.bg-state-lighten {
+	cursor: pointer;
+
+	&.active,
+	&:hover {				
+		background-color: $lighten;
+	}
+}
+
+// Hoverable
+.hoverable {
+	cursor: pointer;
+    transition: $transition-base;
+
+    &:hover {
+        transition: $transition-base;
+    }
 }
 
 // Background image helpers

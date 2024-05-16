@@ -20,7 +20,7 @@ function getChartOptions(chartHeight: string, chartColor: string) {
   const labelColor = getCSSVariableValue('--bs-gray-800');
   const strokeColor = getCSSVariableValue('--bs-gray-300');
   const baseColor = getCSSVariableValue('--bs-' + chartColor);
-  const lightColor = getCSSVariableValue('--bs-' + chartColor + '-light');
+  const lightColor = getCSSVariableValue('--bs-light-' + chartColor);
 
   return {
     series: [
@@ -125,7 +125,7 @@ function getChartOptions(chartHeight: string, chartColor: string) {
         fontSize: '12px',
       },
       y: {
-        formatter: function (val: any) {
+        formatter: function (val: number) {
           return '$' + val + ' thousands';
         },
       },

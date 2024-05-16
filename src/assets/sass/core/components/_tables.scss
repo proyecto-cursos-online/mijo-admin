@@ -3,7 +3,7 @@
 //
 
 // Table
-.table:not(.table-bordered) {
+.table {
 	// Fix for BS 5.1.2 update
 	& > :not(:first-child) {
     	border-color: transparent;
@@ -59,22 +59,6 @@
 		border-collapse: separate;
 	}
 
-	// Row Rounded
-	&.table-rows-rounded {
-		th,td {
-			&:first-child {
-				border-top-left-radius: 6px;
-				border-bottom-left-radius: 6px;
-			}
-
-			&:last-child {
-				border-top-right-radius: 6px;
-				border-bottom-right-radius: 6px;
-			}
-		}
-
-	}
-
 	// Flush
 	&.table-flush {
 		tr, th, td {
@@ -87,7 +71,7 @@
 		tr {
 			border-bottom-width: 1px;
 			border-bottom-style: solid;
-			border-bottom-color: var(--#{$prefix}border-color);
+			border-bottom-color: $border-color;
 		}
 
 		tfoot {
@@ -102,7 +86,7 @@
 		tr {
 			border-bottom-width: 1px;
 			border-bottom-style: dashed;
-			border-bottom-color: var(--#{$prefix}border-color);
+			border-bottom-color: $border-color;
 		}
 
 		tfoot {
@@ -113,18 +97,13 @@
 	}
 
 	// Row border colors
-	@each $name, $value in $grays {
-		&.table-row-gray-#{$name} {
+	@each $color, $value in $grays {
+		&.table-row-gray-#{$color} {
 			tr { 
-				border-bottom-color: var(--#{$prefix}gray-#{$name});
+				border-bottom-color: $value;
 			}
 		}
 	}	
-}
-
-// Layout fixed
-.table-layout-fixed {
-	table-layout: fixed;
 }
 
 // Sorting
@@ -155,14 +134,14 @@
 .table-sort-asc {
 	&:after {
 		opacity: 1;
-		@include svg-bg-icon(arrow-top, var(--#{$prefix}text-muted));
+		@include svg-bg-icon(arrow-top, $text-muted);
 	}
 }
 
 .table-sort-desc {
 	&:after {
 		opacity: 1;
-		@include svg-bg-icon(arrow-bottom, var(--#{$prefix}text-muted));
+		@include svg-bg-icon(arrow-bottom, $text-muted);
 	}
 }
 
@@ -173,13 +152,13 @@
 	top: 50%;
 	left: 50%;
 	@include border-radius($border-radius);
-	box-shadow: var(--#{$prefix}table-loading-message-box-shadow);
-	background-color: $table-loading-message-bg;
-	color: $table-loading-message-color;
+	box-shadow: $dropdown-box-shadow;
+	background-color: $tooltip-bg;
+	color: if(isDarkMode(), $gray-700, $gray-600);
 	font-weight: $font-weight-bold;
 	margin: 0 !important;
 	width: auto;
-	padding: 0.85rem 2rem !important;
+	padding: 1rem 2rem !important;
 	transform: translateX(-50%) translateY(-50%);
 }
 

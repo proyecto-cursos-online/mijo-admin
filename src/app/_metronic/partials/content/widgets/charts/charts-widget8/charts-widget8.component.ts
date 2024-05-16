@@ -21,13 +21,13 @@ function getChartOptions(height: number) {
   const strokeColor = getCSSVariableValue('--bs-gray-300');
 
   const color1 = getCSSVariableValue('--bs-warning');
-  const color1Light = getCSSVariableValue('--bs-warning-light');
+  const color1Light = getCSSVariableValue('--bs-light-warning');
 
   const color2 = getCSSVariableValue('--bs-success');
-  const color2Light = getCSSVariableValue('--bs-success-light');
+  const color2Light = getCSSVariableValue('--bs-light-success');
 
   const color3 = getCSSVariableValue('--bs-primary');
-  const color3Light = getCSSVariableValue('--bs-primary-light');
+  const color3Light = getCSSVariableValue('--bs-light-primary');
 
   return {
     series: [

@@ -6,16 +6,8 @@
 	// States
 	.show > .nav-link,
 	.nav-link{		
-		border: 1px dashed var(--#{$prefix}border-dashed-color);
-		@include border-radius($border-radius-lg);
-		
-		&.nav-link-border-solid {
-			border: 3px solid var(--#{$prefix}border-dashed-color);
-
-			&.active {					 		
-				border: 3px solid var(--#{$prefix}primary);	 
-			}
-		}
+		border: 1px dashed $border-dashed-color;
+		border-radius: 12px;
 		
         .nav-icon {
             img {
@@ -34,12 +26,12 @@
 
         &.active {	
 			background-color: transparent;		
-			border: 1px solid var(--#{$prefix}border-dashed-color);
+			border: 1px solid $border-dashed-color;
 			transition-duration: 1ms;			
 			position: relative;
 
 			.nav-text {
-				color: var(--#{$prefix}gray-800) !important;
+				color: $gray-800 !important;
 				transition: $transition-link;
 			}
 			
@@ -68,21 +60,21 @@
 
 				&:hover {				 
 					span:nth-child(1) {
-						color: $white !important;
+						color: white !important;
 					}
 	
 					span:nth-child(2) {
-						color: $white !important;
+						color: white !important;
 					}						 	 
 				}
 				
 				&.active {				 
 					span:nth-child(1) {
-						color: $white !important;
+						color: white !important;
 					}
 	
 					span:nth-child(2) {
-						color: $white !important;
+						color: white !important;
 					}						 	 
 				}	
 			}				 		 

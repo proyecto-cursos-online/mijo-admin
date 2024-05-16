@@ -22,7 +22,7 @@
 
 			i,
 			.svg-icon {
-	    		color: var(--#{$prefix}primary);
+	    		color: $primary;
 	    	}
 		}
 
@@ -34,52 +34,7 @@
 
 				i,
 				.svg-icon {
-		    		color: var(--#{$prefix}text-muted);
-		    	}
-			}
-		}
-	}
-
-	// Icon collapse mode
-	&.accordion-icon-collapse {
-		// Accordion icon expaned mode
-		.accordion-icon {
-			display: flex;
-			flex-shrink: 0;
-			align-items: center;
-			justify-content: center;
-			transition: $transition-base;
-
-			.accordion-icon-on {
-				display: inline-flex;	
-			}
-
-			.accordion-icon-off {
-				display: none;	
-			}
-
-			i,
-			.svg-icon {
-	    		color: var(--#{$prefix}primary);
-	    	}
-		}
-
-		// Accordion icon collapsed mode
-		.collapsed {
-			.accordion-icon {
-				transition: $transition-base;
-				
-				.accordion-icon-on {
-					display: none;	
-				}
-
-				.accordion-icon-off {
-					display: inline-flex;	
-				}
-
-				i,
-				.svg-icon {
-		    		color: var(--#{$prefix}text-muted);
+		    		color: $text-muted;
 		    	}
 			}
 		}

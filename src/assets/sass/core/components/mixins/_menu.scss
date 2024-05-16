@@ -5,10 +5,13 @@
 // Set arrow direction
 @mixin menu-link-arrow-rotate($angle, $angleRtl) {
 	/*rtl:ignore*/
-	transform: rotateZ($angleRtl);
-	/*rtl:remove*/
 	transform: rotateZ($angle);
-	transition: $menu-accordion-arrow-transition;
+	transition: get($menu, accordion, arrow-transition);
+	
+	[direction="rtl"] & {
+		/*rtl:ignore*/
+		transform: rotateZ($angleRtl);
+	}
 }
 
 // Set menu link padding x
@@ -34,9 +37,10 @@
 		}
 	}
 }
-	
-// Set link indention
+
+// Set menu indention
 @mixin menu-link-indention($value, $offset) {
+	// Accordion mode			
 	.menu-sub:not([data-popper-placement]) {
 		> .menu-item,
 		> .menu-inner > .menu-item {
@@ -75,10 +79,8 @@
 				}
 			}
 		}
-	}
 
-	&.menu-fit {
-		.menu-sub:not([data-popper-placement]) {
+		.menu-fit & {
 			> .menu-item,
 			> .menu-inner > .menu-item {
 				> .menu-content,
@@ -121,13 +123,6 @@
 				}
 			}
 		}
-	}
-}
-
-// Set sub indention
-@mixin menu-sub-indention($value) {
-	.menu-sub:not([data-popper-placement]) {
-		margin-left: $value;
 	}
 }
 

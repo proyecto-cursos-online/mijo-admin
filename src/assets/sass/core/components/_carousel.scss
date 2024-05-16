@@ -3,7 +3,7 @@
 //
 
 
-.carousel-custom {
+.carousel.carousel-custom {
     // Indicators
     .carousel-indicators {
         align-items: center;
@@ -27,7 +27,7 @@
         &.carousel-indicators-dots {
             li {
                 border-radius: 0;
-                background-color: transparent !important;
+                background-color: transparent;
                 height: $carousel-custom-dots-indicator-active-size;
                 width: $carousel-custom-dots-indicator-active-size;
                 display: flex;
@@ -62,7 +62,7 @@
         &.carousel-indicators-bullet {
             li {
                 transition: all $carousel-custom-indicator-transition-speed ease;
-                background-color: transparent !important;
+                background-color: transparent;
                 border-radius: $carousel-custom-bullet-indicator-default-size;
                 height: $carousel-custom-bullet-indicator-default-size;
                 width: $carousel-custom-bullet-indicator-default-size;
@@ -91,7 +91,7 @@
                         transition: all $carousel-custom-indicator-transition-speed ease;
                         height: $carousel-custom-bullet-indicator-default-size;
                         width: $carousel-custom-bullet-indicator-active-width;
-                        background-color: $carousel-custom-bullet-indicator-active-bg-color;
+                        background-color: $carousel-custom-bullet-indicator-active-bg-color
                     }
                 }
             }
@@ -102,7 +102,7 @@
     @each $name, $value in $theme-colors {
         .carousel-indicators-active-#{$name} {
             li.active:after {
-                background-color: var(--#{$prefix}#{$name}) !important;
+                background-color: $value !important;
             }
         }
     }

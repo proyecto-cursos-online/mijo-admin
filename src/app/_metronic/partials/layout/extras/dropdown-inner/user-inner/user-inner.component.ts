@@ -13,10 +13,9 @@ export class UserInnerComponent implements OnInit, OnDestroy {
   @HostBinding('attr.data-kt-menu') dataKtMenu = 'true';
 
   language: LanguageFlag;
-  user$: Observable<UserType>;
+  user$: Observable<any>;
   langs = languages;
   private unsubscribe: Subscription[] = [];
-
   constructor(
     private auth: AuthService,
     private translationService: TranslationService
@@ -26,7 +25,6 @@ export class UserInnerComponent implements OnInit, OnDestroy {
     this.user$ = this.auth.currentUserSubject.asObservable();
     this.setLanguage(this.translationService.getSelectedLanguage());
   }
-
   logout() {
     this.auth.logout();
     document.location.reload();

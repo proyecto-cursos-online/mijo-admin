@@ -5,7 +5,6 @@ import { first } from 'rxjs/operators';
 import { UserModel } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { URL_FROTEND } from 'src/app/config/config';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +14,8 @@ import { URL_FROTEND } from 'src/app/config/config';
 export class LoginComponent implements OnInit, OnDestroy {
   // KeenThemes mock, change it to:
   defaultAuth: any = {
-    email: 'admin@admin.com',
-    password: 'admin2024',
+    email: 'luis@gmail.com',
+    password: '12345678',
   };
   loginForm: FormGroup;
   hasError: boolean;
@@ -77,14 +76,13 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.hasError = false;
     const loginSubscr = this.authService
       .login(this.f.email.value, this.f.password.value)
-      // .pipe(first())
+      .pipe(first())
       .subscribe((user: any) => {
         if (user) {
-          location.href = URL_FROTEND + "/dashboard";
+          this.router.navigate([this.returnUrl]);
         } else {
           this.hasError = true;
         }
-        console.log(user);
       });
     this.unsubscribe.push(loginSubscr);
   }

@@ -15,7 +15,7 @@
         <a href="#" class="text-gray-800 text-hover-primary fs-6 fw-bolder">
           Carles Nilson
         </a>
-        <span class="text-gray-500 fw-bold">Yestarday at 5:06 PM</span>
+        <span class="text-gray-400 fw-bold">Yestarday at 5:06 PM</span>
       </div>
       <!-- end::Info -->
     </div>
@@ -30,7 +30,10 @@
         data-kt-menu-placement="bottom-end"
         data-kt-menu-flip="top-end"
       >
-        <app-keenicon name="category" class="fs-2"></app-keenicon>
+        <span
+          [inlineSVG]="'./assets/media/icons/duotune/general/gen024.svg'"
+          class="svg-icon svg-icon-2"
+        ></span>
       </button>
       <app-dropdown-menu2></app-dropdown-menu2>
     </div>
@@ -59,7 +62,10 @@
           me-4
         "
       >
-        <app-keenicon name="element-plus" class="fs-2"></app-keenicon>
+        <span
+          [inlineSVG]="'./assets/media/icons/duotune/general/gen022.svg'"
+          class="svg-icon svg-icon-2"
+        ></span>
         12
       </a>
 
@@ -71,7 +77,10 @@
           py-2
         "
       >
-        <app-keenicon name="heart" class="fs-2"></app-keenicon>
+        <span
+          [inlineSVG]="'./assets/media/icons/duotune/general/gen030.svg'"
+          class="svg-icon svg-icon-2"
+        ></span>
         150
       </a>
     </div>
@@ -97,11 +106,11 @@
             Alice Danchik
           </a>
 
-          <span class="text-gray-500 fw-bold fs-7">1 day</span>
+          <span class="text-gray-400 fw-bold fs-7">1 day</span>
 
           <a
             href="#"
-            class="ms-auto text-gray-500 text-hover-primary fw-bold fs-7"
+            class="ms-auto text-gray-400 text-hover-primary fw-bold fs-7"
           >
             Reply
           </a>
@@ -135,11 +144,11 @@
             Harris Bold
           </a>
 
-          <span class="text-gray-500 fw-bold fs-7">2 days</span>
+          <span class="text-gray-400 fw-bold fs-7">2 days</span>
 
           <a
             href="#"
-            class="ms-auto text-gray-500 text-hover-primary fw-bold fs-7"
+            class="ms-auto text-gray-400 text-hover-primary fw-bold fs-7"
           >
             Reply
           </a>
@@ -173,11 +182,17 @@
 
     <div class="position-absolute top-0 end-0 me-n5">
       <span class="btn btn-icon btn-sm btn-active-color-primary pe-0 me-2">
-        <app-keenicon name="element-plus" class="fs-3 mb-3"></app-keenicon>
+        <span
+          [inlineSVG]="'./assets/media/icons/duotune/general/gen022.svg'"
+          class="svg-icon svg-icon-3 mb-3"
+        ></span>
       </span>
 
       <span class="btn btn-icon btn-sm btn-active-color-primary ps-0">
-        <app-keenicon name="geolocation" class="fs-3 mb-3"></app-keenicon>
+        <span
+          [inlineSVG]="'./assets/media/icons/duotune/general/gen018.svg'"
+          class="svg-icon svg-icon-3 mb-3"
+        ></span>
       </span>
     </div>
   </form>

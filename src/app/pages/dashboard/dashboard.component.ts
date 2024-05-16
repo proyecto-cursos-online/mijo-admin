@@ -1,21 +1,12 @@
-import { Component, ViewChild } from '@angular/core';
-import { ModalConfig, ModalComponent } from '../../_metronic/partials';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent {
-  modalConfig: ModalConfig = {
-    modalTitle: 'Modal title',
-    dismissButtonLabel: 'Submit',
-    closeButtonLabel: 'Cancel'
-  };
-  @ViewChild('modal') private modalComponent: ModalComponent;
+export class DashboardComponent implements OnInit {
   constructor() {}
 
-  async openModal() {
-    return await this.modalComponent.open();
-  }
+  ngOnInit(): void {}
 }

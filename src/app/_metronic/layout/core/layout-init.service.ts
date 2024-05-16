@@ -1,133 +1,207 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { ILayout, LayoutType } from './configs/config';
+import { ILayout } from './default-layout.config';
 import { LayoutService } from './layout.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LayoutInitService {
-  private config = new BehaviorSubject<ILayout | null>(null);
   constructor(private layout: LayoutService) {}
 
-  reInitProps(layoutType?: LayoutType) {
-    this.layout.reInitProps();
-    const currentLayoutType = layoutType
-      ? layoutType
-      : this.layout.getBaseLayoutTypeFromRouteOrLocalStorage();
-    const config = this.layout.getLayoutConfig(currentLayoutType);
-    this.layout.currentLayoutTypeSubject.next(currentLayoutType)
-    this.config.next({ ...config });
+  init() {
+    this.layout.initConfig();
 
     // init base layout
-    this.initLayoutSettings(currentLayoutType, config);
-    this.initToolbarSettings(config);
-    this.initWidthSettings(config);
-    this.layout.layoutConfigSubject.next({ ...this.config.value });
+    this.initLayout();
+    this.initHeader();
+    this.initPageTitle();
+    this.initToolbar();
+    this.initContent();
+    this.initAside();
+    this.initFooter();
   }
 
-  setBaseLayoutType(layoutType: LayoutType) {
-    this.layout.setBaseLayoutType(layoutType);
-    this.reInitProps(layoutType);
+  update(fieldsToUpdate: Partial<ILayout>) {
+    this.layout.updateConfig(fieldsToUpdate);
+    this.initLayout();
+    this.initHeader();
+    this.initPageTitle();
+    this.initToolbar();
+    this.initContent();
+    this.initAside();
+    this.initFooter();
   }
 
-  private initLayoutSettings(layoutType: LayoutType, config: ILayout) {
-    // clear body classes
-    const bodyClasses = document.body.classList.value.split(' ');
-    bodyClasses.forEach((cssClass) => document.body.classList.remove(cssClass));
-    // clear body attributes
-    const bodyAttributes = document.body
-      .getAttributeNames()
-      .filter((t) => t.indexOf('data-') > -1);
-    bodyAttributes.forEach((attr) => document.body.removeAttribute(attr));
+  private initLayout() {
     document.body.setAttribute('style', '');
-    document.body.setAttribute('id', 'kt_app_body');
-    document.body.setAttribute('data-kt-app-layout', layoutType);
-    document.body.setAttribute('data-kt-name', 'metronic');
-    document.body.classList.add('app-default');
+    document.body.setAttribute('id', 'kt_body');
+    const selfBodyBackgroundImage = this.layout.getProp(
+      'main.body.backgroundImage'
+    );
+    if (selfBodyBackgroundImage) {
+      document.body.style.backgroundImage = `url("${selfBodyBackgroundImage}")`;
+    }
 
-    const pageWidth = config.app?.general?.pageWidth;
-    if (layoutType === 'light-header' || layoutType === 'dark-header') {
-      if (pageWidth === 'default') {
-        const header = config.app?.header;
-        if (header && header.default && header.default.container) {
-          header.default.container = 'fixed';
-        }
-        const toolbar = config.app?.toolbar;
-        if (toolbar) {
-          toolbar.container = 'fixed';
-        }
-        const content = config.app?.content;
-        if (content) {
-          content.container = 'fixed';
-        }
-        const footer = config.app?.footer;
-        if (footer) {
-          footer.container = 'fixed';
-        }
-
-        const updatedApp = {
-          ...config.app,
-          ...header,
-          ...toolbar,
-          ...content,
-          ...footer,
-        };
-        this.config.next({ ...config, ...updatedApp });
-      }
+    const selfBodyClass = (
+      this.layout.getProp('main.body.class') || ''
+    ).toString();
+    if (selfBodyClass) {
+      const bodyClasses: string[] = selfBodyClass.split(' ');
+      bodyClasses.forEach((cssClass) => document.body.classList.add(cssClass));
     }
   }
 
-  private initToolbarSettings(config: ILayout) {
-    const appHeaderDefaultContent = config.app?.header?.default?.content;
-    if (appHeaderDefaultContent === 'page-title') {
-      const toolbar = config.app?.toolbar;
-      if (toolbar) {
-        toolbar.display = false;
-        const updatedApp = { ...config.app, ...toolbar };
-        this.config.next({ ...config, ...updatedApp });
-      }
-      return;
+  private initHeader() {
+    this.layout.setCSSClass(
+      'headerContainer',
+      this.layout.getProp('header.width') === 'fluid'
+        ? 'container-fluid'
+        : 'container-xxl'
+    );
+
+    const fixedDesktop = this.layout.getProp('header.fixed.desktop') as boolean;
+    if (fixedDesktop) {
+      document.body.classList.add('header-fixed');
     }
 
-    const pageTitle = this.config.value?.app?.pageTitle;
-    if (pageTitle) {
-      pageTitle.description = false;
-      pageTitle.breadCrumb = true;
-      const updatedApp = { ...config.app, ...pageTitle };
-      this.config.next({ ...config, ...updatedApp });
+    const tabletAndMobile = this.layout.getProp(
+      'header.fixed.tabletAndMobile'
+    ) as boolean;
+    if (tabletAndMobile) {
+      document.body.classList.add('header-tablet-and-mobile-fixed');
     }
   }
 
-  private initWidthSettings(config: ILayout) {
-    const pageWidth = config.app?.general?.pageWidth;
-    if (!pageWidth || pageWidth === 'default') {
+  private initPageTitle() {
+    const display = this.layout.getProp('pageTitle.display') as boolean;
+    if (!display) {
       return;
     }
 
-    const header = config.app?.header;
-    if (header && header.default) {
-      header.default.container = pageWidth;
+    const direction = this.layout.getProp('pageTitle.direction') as string;
+    if (direction === 'column') {
+      this.layout.setCSSClass('pageTitle', 'flex-column');
+      this.layout.setCSSClass('pageTitle', 'align-items-start');
+    } else {
+      this.layout.setCSSClass('pageTitle', 'align-items-center');
+      this.layout.setCSSClass('pageTitle', 'flex-wrap');
     }
-    const toolbar = config.app?.toolbar;
-    if (toolbar) {
-      toolbar.container = pageWidth;
+    this.layout.setCSSClass('pageTitle', 'me-3');
+
+    const responsive = this.layout.getProp('pageTitle.responsive') as boolean;
+
+    if (responsive) {
+      this.layout.setCSSClass('pageTitle', 'mb-5');
+      this.layout.setCSSClass('pageTitle', 'mb-lg-0');
+      this.layout.setHTMLAttribute('pageTitle', 'data-kt-swapper', true);
+      this.layout.setHTMLAttribute(
+        'pageTitle',
+        'data-kt-swapper-mode',
+        'prepend'
+      );
+
+      const responsiveBreakpoint = this.layout.getProp(
+        'pageTitle.responsiveBreakpoint'
+      ) as string;
+      const responsiveTarget = this.layout.getProp(
+        'pageTitle.responsiveTarget'
+      ) as string;
+      this.layout.setHTMLAttribute(
+        'pageTitle',
+        'data-kt-swapper-parent',
+        `{ default: '#kt_content_container', '${responsiveBreakpoint}': '${responsiveTarget}'}`
+      );
     }
-    const content = config.app?.content;
-    if (content) {
-      content.container = pageWidth;
+  }
+
+  private initToolbar() {
+    const display = this.layout.getProp('toolbar.display') as boolean;
+    if (!display) {
+      return;
     }
-    const footer = config.app?.footer;
-    if (footer) {
-      footer.container = pageWidth;
+
+    document.body.classList.add('toolbar-enabled');
+    const widthClass = this.layout.getProp('toolbar.width') as string;
+    this.layout.setCSSClass(
+      'toolbarContainer',
+      widthClass === 'fluid' ? 'container-fluid' : 'container-xxl'
+    );
+
+    const fixedDesktop = this.layout.getProp(
+      'toolbar.fixed.desktop'
+    ) as boolean;
+    if (fixedDesktop) {
+      document.body.classList.add('toolbar-fixed');
     }
-    const updatedApp = {
-      ...config.app,
-      ...header,
-      ...toolbar,
-      ...content,
-      ...footer,
-    };
-    this.config.next({ ...this.config.value, ...updatedApp });
+
+    const fixedTabletAndMobileMode = this.layout.getProp(
+      'toolbar.fixed.tabletAndMobileMode'
+    ) as boolean;
+    if (fixedTabletAndMobileMode) {
+      document.body.classList.add('toolbar-tablet-and-mobile-fixed');
+    }
+
+    // Height setup
+    const type = this.layout.getProp('toolbar.layout') as string;
+    if (type === 'toolbar1') {
+      const height = this.layout.getProp(
+        'toolbar.layouts.toolbar1.height'
+      ) as string;
+      const heightAndTabletMobileMode = this.layout.getProp(
+        'toolbar.layouts.toolbar1.heightAndTabletMobileMode'
+      ) as string;
+      let bodyStyles: string = '';
+      if (height) {
+        bodyStyles += ` --kt-toolbar-height: ${height};`;
+      }
+
+      if (heightAndTabletMobileMode) {
+        bodyStyles += ` --kt-toolbar-height-tablet-and-mobile: ${heightAndTabletMobileMode};`;
+      }
+      document.body.setAttribute('style', bodyStyles);
+    }
+  }
+
+  private initContent() {
+    const width = this.layout.getProp('content.width') as string;
+    this.layout.setCSSClass(
+      'contentContainer',
+      width === 'fluid' ? 'container-fluid' : 'container-xxl'
+    );
+  }
+
+  private initAside() {
+    const display = this.layout.getProp('aside.display') as boolean;
+    if (!display) {
+      return;
+    }
+
+    // Enable Aside
+    document.body.classList.add('aside-enabled');
+    const theme = this.layout.getProp('aside.theme') as string;
+    this.layout.setCSSClass('aside', `aside-${theme}`);
+    const fixed = this.layout.getProp('aside.fixed') as boolean;
+    if (fixed) {
+      document.body.classList.add('aside-fixed');
+    }
+
+    const minimized = this.layout.getProp('aside.minimized') as boolean;
+    if (minimized) {
+      document.body.setAttribute('data-kt-aside-minimize', 'on');
+    }
+
+    // Hoverable on minimize
+    const hoverable = this.layout.getProp('aside.hoverable') as boolean;
+    if (hoverable) {
+      this.layout.setCSSClass('aside', `aside-hoverable`);
+    }
+  }
+
+  private initFooter() {
+    const width = this.layout.getProp('footer.width') as string;
+    this.layout.setCSSClass(
+      'footerContainer',
+      width === 'fluid' ? 'container-fluid' : 'container-xxl'
+    );
   }
 }

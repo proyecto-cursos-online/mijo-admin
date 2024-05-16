@@ -23,7 +23,7 @@
     & > i,
     & > .svg-icon {
         line-height: 1;
-        color: var(--#{$prefix}rating-color-default);
+        color: get($rating, color, default);
     }
 }
 
@@ -35,28 +35,28 @@ div.rating-label.checked,
 label.rating-label {
     & > i,
     & > .svg-icon {
-        color: var(--#{$prefix}rating-color-active);
+        color: get($rating, color, active);
     }
 }
 
 .rating-input:checked ~ .rating-label {
     & > i,
     & > .svg-icon {
-        color: var(--#{$prefix}rating-color-default);
+        color: get($rating, color, default);
     }
 }
 
 .rating:hover label.rating-label {
     & > i,
     & > .svg-icon {
-        color: var(--#{$prefix}rating-color-active);
+        color: get($rating, color, active);
     }
 }
 
 label.rating-label:hover ~ .rating-label {
     & > i,
     & > .svg-icon {
-        color: var(--#{$prefix}rating-color-default);
+        color: get($rating, color, default);
     }
-    color: var(--#{$prefix}rating-color-default);
+    color: get($rating, color, default);
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ICreateAccount } from '../../create-account.helper';
@@ -7,7 +7,7 @@ import { ICreateAccount } from '../../create-account.helper';
   selector: 'app-step2',
   templateUrl: './step2.component.html',
 })
-export class Step2Component implements OnInit, OnDestroy {
+export class Step2Component implements OnInit {
   @Input('updateParentModel') updateParentModel: (
     part: Partial<ICreateAccount>,
     isFormValid: boolean

@@ -5,8 +5,8 @@ import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InlineSVGModule } from 'ng-inline-svg-2';
+import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserAddComponent } from './user-add/user-add.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
@@ -29,7 +29,7 @@ import { UserDeleteComponent } from './user-delete/user-delete.component';
     NgbModule,
     ReactiveFormsModule,
     InlineSVGModule,
-    NgbModalModule,
+    NgbModalModule
   ]
 })
 export class UserModule { }

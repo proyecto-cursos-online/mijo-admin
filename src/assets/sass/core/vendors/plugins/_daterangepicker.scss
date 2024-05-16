@@ -9,8 +9,8 @@
     margin: 0;
     border: 0;
     width: auto;
-    background-color: var(--#{$prefix}body-bg);
-    box-shadow: var(--#{$prefix}dropdown-box-shadow);
+    background-color: $body-bg;
+    box-shadow: $dropdown-box-shadow;
     font-family: $font-family-sans-serif;
     z-index: $zindex-dropdown;
     @include border-radius($dropdown-border-radius);
@@ -34,39 +34,35 @@
     }
 
     .calendar-table {
-        background-color: var(--#{$prefix}body-bg);
+        background-color: $body-bg;
         border: 0;
     }
 
     .ranges {
         @include border-radius($dropdown-border-radius);
-        background-color: var(--#{$prefix}body-bg);
-        position: relative;
-        overflow: hidden;
+        background-color: $body-bg;
 
         ul {
             padding: 1rem 0;
-            width: $daterangepicker-ranges-list-width;
-            overflow: auto;
-            max-height: $daterangepicker-ranges-list-height;
+            width: 175px;
         }
 
         li {
             padding: 0.7rem 1.75rem;
             font-weight: 500;
             font-size: 1rem;
-            color: var(--#{$prefix}gray-600);
+            color: $gray-600;
             transition: $transition-link;
 
             &:hover {
-                background-color: var(--#{$prefix}component-hover-bg);
-                color: var(--#{$prefix}component-hover-color);
+                background-color: $component-hover-bg;
+                color: $component-hover-color;
                 transition: $transition-link;
             }
 
             &.active {
-                background-color: var(--#{$prefix}component-active-bg);
-                color: var(--#{$prefix}component-active-color);
+                background-color: $component-active-bg;
+                color: $component-active-color;
                 transition: $transition-link;
             }
         }
@@ -84,7 +80,7 @@
     &.show-ranges {
         &.show-calendar {
             .ranges  {
-                border-right: 1px solid var(--#{$prefix}gray-200);
+                border-right: 1px solid $gray-200;
             }
         }
 
@@ -95,25 +91,30 @@
 
     .drp-buttons {
         padding: 1rem 1.75rem;
-        border-top: 1px solid var(--#{$prefix}gray-200);
+        border-top: 1px solid $gray-200;
 
        .btn {
             font-size: 1rem;
-            font-weight: $font-weight-semibold;
+            font-weight: $font-weight-bold;
             padding: 0.5rem 1rem;
         }
 
         .cancelBtn {
-            @include button-custom-variant(
-                $color: var(--#{$prefix}light-inverse),
-                $icon-color: var(--#{$prefix}light-inverse),
-                $border-color: var(--#{$prefix}light),
-                $bg-color: var(--#{$prefix}light),
-                $color-active: var(--#{$prefix}light-inverse),
-                $icon-color-active: var(--#{$prefix}light-inverse),
-                $border-color-active: var(--#{$prefix}light-active),
-                $bg-color-active: var(--#{$prefix}light-active)
-            );
+            $color: $light-inverse;
+            $icon-color: $light-inverse;
+            $border-color: $light;
+            $bg-color: $light;
+
+            $color-active: $light-inverse;
+            $icon-color-active: $light-inverse;
+            $border-color-active: $light-active;
+            $bg-color-active: $light-active;
+
+            @include button-custom-variant($color, $icon-color, $border-color, $bg-color, $color-active, $icon-color-active, $border-color-active, $bg-color-active);
+        }
+
+        .applyBtn {
+
         }
     }
 
@@ -140,30 +141,30 @@
 
             &.available:hover {
                 @include border-radius($border-radius);
-                background-color: var(--#{$prefix}component-hover-bg);
-                color: var(--#{$prefix}component-hover-color);
+                background-color: $component-hover-bg;
+                color: $component-hover-color;
             }
         }
 
         th {
-            font-weight: $font-weight-semibold;
-            color: var(--#{$prefix}gray-800);
+            font-weight: $font-weight-bold;
+            color: $gray-800;
 
             &.month {
-                font-weight: $font-weight-semibold;
-                color: var(--#{$prefix}gray-800);
+                font-weight: $font-weight-bold;
+                color: $gray-800;
             }
 
             &.next,
             &.prev {
                 span {
                     border-width: 0 1px 1px 0;
-                    border-color: var(--#{$prefix}gray-600);
+                    border-color: $gray-600;
                 }
 
                 &.available:hover {
                     span {
-                        border-color: var(--#{$prefix}component-hover-color);
+                        border-color: $component-hover-color;
                     }
                 }
             }
@@ -182,15 +183,15 @@
         }
 
         td {
-            color: var(--#{$prefix}gray-700);
+            color: $gray-700;
 
             &.available.off {
-                color: var(--#{$prefix}gray-500);
+                color: $gray-400;
             }
 
             &.active {
-                background-color: var(--#{$prefix}component-active-bg) !important;
-                color: var(--#{$prefix}component-active-color) !important;
+                background-color: $component-active-bg !important;
+                color: $component-active-color !important;
                 @include border-radius($border-radius);
 
                 &.start-date {
@@ -210,19 +211,19 @@
 
             &.today,
             &.today.active {
-                background: var(--#{$prefix}gray-200) !important;
-                color: var(--#{$prefix}gray-700) !important;
+                background: $component-hover-bg !important;
+                color: $component-hover-color !important;
                 @include border-radius($border-radius);
             }
 
             &.in-range.available:not(.active):not(.off):not(.today) {
-                background-color: var(--#{$prefix}component-hover-bg);
-                color: var(--#{$prefix}component-hover-color);
+                background-color: $component-hover-bg;
+                color: $component-hover-color;
             }
 
             &:hover {
-                background-color: var(--#{$prefix}component-hover-bg);
-                color: var(--#{$prefix}component-hover-color);
+                background-color: $component-hover-bg;
+                color: $component-hover-color;
             }
         }
     }
@@ -235,14 +236,14 @@
         padding-top: 0.35rem;
         padding-bottom: 0.35rem;
         @include border-radius($border-radius);
-        background-color: var(--#{$prefix}body-bg) !important;
+        background-color: $body-bg !important;
         border-color: transparent;
-        color: var(--#{$prefix}input-color);
-        font-weight: $font-weight-semibold;
+        color: $input-color;
+        font-weight: $font-weight-bold;
         outline: 0 !important;
 
         &:focus {
-            background-color: var(--#{$prefix}gray-100);
+            background-color: $gray-100;
         }
     }
 }

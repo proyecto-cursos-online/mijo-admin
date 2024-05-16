@@ -9,27 +9,14 @@ export interface EventMeta {
 }
 
 export class EventHandlerUtil {
-  static store: {
-    [name: string]: {
-      [handlerId: string]: EventMeta
-    }
-  } = {}
+  static store: Map<string, Map<string, EventMeta>> = new Map()
 
-  private static setEventMetasByName(
-    name: string,
-    handlers: {
-      [handlerId: string]: EventMeta
-    }
-  ): void {
-    EventHandlerUtil.store[name] = handlers
+  private static setEventMetasByName(name: string, metas: Map<string, EventMeta>): void {
+    EventHandlerUtil.store.set(name, metas)
   }
 
-  private static getEventMetaByName(name: string):
-    | {
-        [handlerId: string]: EventMeta
-      }
-    | undefined {
-    return EventHandlerUtil.store[name]
+  private static getEventMetasByName(name: string): Map<string, EventMeta> | undefined {
+    return EventHandlerUtil.store.get(name)
   }
 
   private static setEventMetaByNameAndHandlerId(
@@ -37,24 +24,26 @@ export class EventHandlerUtil {
     handlerId: string,
     meta: EventMeta
   ): void {
-    if (EventHandlerUtil.store[name]) {
-      EventHandlerUtil.store[name][handlerId] = meta
-      return
+    let metas = EventHandlerUtil.getEventMetasByName(name)
+    if (!metas) {
+      metas = new Map()
     }
-    EventHandlerUtil.store[name] = {}
-    EventHandlerUtil.store[name][handlerId] = meta
+
+    metas.set(handlerId, meta)
+    EventHandlerUtil.setEventMetasByName(name, metas)
   }
 
-  private static getEventMetaByHandlerId(name: string, handlerId: string): EventMeta | undefined {
-    const handlersIds = EventHandlerUtil.store[name]
-    if (!handlersIds) {
+  private static getEventsMetaByHandlerId(name: string, handlerId: string): EventMeta | undefined {
+    const metas = EventHandlerUtil.store.get(name)
+    if (!metas) {
       return
     }
-    return handlersIds[handlerId]
+
+    return metas.get(handlerId)
   }
 
   private static setFiredByNameAndHandlerId(name: string, handerId: string, fired: boolean): void {
-    const meta = EventHandlerUtil.getEventMetaByHandlerId(name, handerId)
+    const meta = EventHandlerUtil.getEventsMetaByHandlerId(name, handerId)
     if (!meta) {
       return
     }
@@ -68,14 +57,9 @@ export class EventHandlerUtil {
     name: string,
     callback: Function,
     one: boolean = false
-  ): string {
+  ) {
     const handlerId = getUniqueIdWithPrefix('event')
-    const data = DataUtil.get(element, name)
-    const handlersIds = data ? (data as string[]) : []
-    handlersIds.push(handlerId)
-
-    DataUtil.set(element, name, handlersIds)
-
+    DataUtil.set(element, name, handlerId)
     const meta: EventMeta = {
       name: name,
       callback: callback,
@@ -84,50 +68,46 @@ export class EventHandlerUtil {
     }
 
     EventHandlerUtil.setEventMetaByNameAndHandlerId(name, handlerId, meta)
-    return handlerId
   }
 
-  private static removeEvent(element: HTMLElement, name: string, handerId: string) {
-    DataUtil.removeOne(element, name, handerId)
-    const handlersIds = EventHandlerUtil.store[name]
-    if (handlersIds) {
+  private static removeEvent(element: HTMLElement, name: string) {
+    const handlerId = DataUtil.get(element, name)
+    if (!handlerId) {
       return
     }
 
-    delete EventHandlerUtil.store[name][handerId]
-  }
-
-  public static trigger(element: HTMLElement, name: string, target?: any, e?: Event): boolean {
-    let returnValue = true
-    if (!DataUtil.has(element, name)) {
-      return returnValue
+    const metas = EventHandlerUtil.getEventMetasByName(name)
+    if (!metas) {
+      return
     }
 
-    let eventValue
-    let handlerId
-    const data = DataUtil.get(element, name)
-    const handlersIds = data ? (data as string[]) : []
-    for (let i = 0; i < handlersIds.length; i++) {
-      handlerId = handlersIds[i]
-      if (EventHandlerUtil.store[name] && EventHandlerUtil.store[name][handlerId]) {
-        const handler = EventHandlerUtil.store[name][handlerId]
+    metas.delete(handlerId)
+    EventHandlerUtil.setEventMetasByName(name, metas)
+  }
+
+  public static trigger(element: HTMLElement, name: string, e?: Event) {
+    if (DataUtil.has(element, name)) {
+      const handlerId = DataUtil.get(element, name)
+      if (!handlerId) {
+        return undefined
+      }
+
+      const handler = EventHandlerUtil.getEventsMetaByHandlerId(name, handlerId)
+      if (handler) {
         if (handler.name === name) {
-          if (handler.one) {
-            if (handler.fired) {
-              EventHandlerUtil.store[name][handlerId].fired = true
-              eventValue = handler.callback.call(this, target)
+          if (handler.one === true) {
+            if (handler.fired === false) {
+              EventHandlerUtil.setFiredByNameAndHandlerId(name, handlerId, true)
+              return handler.callback.call(this, e)
             }
           } else {
-            eventValue = handler.callback.call(this, target)
-          }
-
-          if (eventValue === false) {
-            returnValue = false
+            return handler.callback.call(this, e)
           }
         }
       }
     }
-    return returnValue
+
+    return null
   }
 
   public static on = function (element: HTMLElement, name: string, callBack: Function): void {
@@ -138,7 +118,7 @@ export class EventHandlerUtil {
     EventHandlerUtil.addEvent(element, name, callBack, true)
   }
 
-  public static off(element: HTMLElement, name: string, handerId: string): void {
-    EventHandlerUtil.removeEvent(element, name, handerId)
+  public static off(element: HTMLElement, name: string): void {
+    EventHandlerUtil.removeEvent(element, name)
   }
 }

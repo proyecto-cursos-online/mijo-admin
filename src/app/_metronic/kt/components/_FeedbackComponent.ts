@@ -122,8 +122,8 @@ class FeedbackComponent {
     return EventHandlerUtil.one(this.element, name, handler)
   }
 
-  public off = (name: string, handerId: string) => {
-    return EventHandlerUtil.off(this.element, name, handerId)
+  public off = (name: string) => {
+    return EventHandlerUtil.off(this.element, name)
   }
 
   public trigger = (name: string, event: Event) => {

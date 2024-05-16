@@ -1,9 +1,44 @@
 //
-// Form controls
+// Form Control
 //
 
-// Customization
+
+// Form control
 .form-control {
+	box-shadow: none !important;
+
+	// Dropdown shown state
+	.dropdown.show > & {
+		color: $input-focus-color;
+		background-color: $input-focus-bg;
+  	    border-color: $input-focus-border-color;
+	}
+
+	// Readonly state
+	&[readonly] {
+		background-color: $input-readonly-bg;
+	}
+
+	// Solid style
+	&.form-control-solid {
+		background-color: $input-solid-bg;
+		border-color: $input-solid-bg;
+		@include placeholder($input-solid-placeholder-color);
+		color: $input-solid-color;
+		transition: $transition-input;
+
+		.dropdown.show > &,
+		&:active,
+		&.active,
+		&:focus,
+		&.focus {
+			background-color: $input-solid-bg-focus;
+			border-color: $input-solid-bg-focus;
+			color: $input-solid-color;
+			transition: $transition-input;
+		}
+	}
+
 	// Transparent style
 	&.form-control-transparent {
 		background-color: transparent;
@@ -25,39 +60,9 @@
 	}
 }
 
-// Solid style
-.form-control.form-control-solid {
-	background-color: $input-solid-bg;
-	border-color: $input-solid-bg;
-	color: $input-solid-color;
-	@include placeholder($input-solid-placeholder-color);
-	transition: $transition-input;
-
-	.dropdown.show > &,
-	&:active,
-	&.active,
-	&:focus,
-	&.focus {
-		background-color: $input-solid-bg-focus;
-		border-color: $input-solid-bg-focus;
-		color: $input-solid-color;
-		transition: $transition-input;
-	}
-}
-
-// Form control solid bg
-.form-control-solid-bg {
-	background-color: $input-solid-bg;
-}
-
-// Readonly controls as plain text
-.form-control-plaintext {
-  	color: $input-plaintext-color
-}
-
 // Placeholder colors
 .placeholder-gray-500 {
-	@include placeholder(var(--#{$prefix}gray-500));
+	@include placeholder($gray-500);
 }
 
 .placeholder-white {
@@ -67,4 +72,9 @@
 // Textarea reset resize
 .resize-none {
 	resize: none;
+}
+
+// Form control solid bg
+.form-control-solid-bg {
+	background-color: $input-solid-bg;
 }

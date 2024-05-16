@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InlineSVGModule } from 'ng-inline-svg-2';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { HorizontalComponent } from './horizontal/horizontal.component';
 import { VerticalComponent } from './vertical/vertical.component';
@@ -11,7 +12,6 @@ import { Step2Component } from './steps/step2/step2.component';
 import { Step3Component } from './steps/step3/step3.component';
 import { Step4Component } from './steps/step4/step4.component';
 import { Step5Component } from './steps/step5/step5.component';
-import { SharedModule } from "../../_metronic/shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -28,8 +28,8 @@ import { SharedModule } from "../../_metronic/shared/shared.module";
     CommonModule,
     WizardsRoutingModule,
     ReactiveFormsModule,
+    InlineSVGModule,
     NgbTooltipModule,
-    SharedModule
   ],
 })
 export class WizardsModule {}

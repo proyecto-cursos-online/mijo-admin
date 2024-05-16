@@ -5,7 +5,9 @@ import { InlineSVGModule } from 'ng-inline-svg-2';
 // Advanced Tables
 import { AdvanceTablesWidget1Component } from './advance-tables/advance-tables-widget1/advance-tables-widget1.component';
 import { AdvanceTablesWidget2Component } from './advance-tables/advance-tables-widget2/advance-tables-widget2.component';
+import { AdvanceTablesWidget4Component } from './advance-tables/advance-tables-widget4/advance-tables-widget4.component';
 import { AdvanceTablesWidget7Component } from './advance-tables/advance-tables-widget7/advance-tables-widget7.component';
+import { AdvanceTablesWidget9Component } from './advance-tables/advance-tables-widget9/advance-tables-widget9.component';
 // Base Tables
 import { BaseTablesWidget1Component } from './base-tables/base-tables-widget1/base-tables-widget1.component';
 import { BaseTablesWidget2Component } from './base-tables/base-tables-widget2/base-tables-widget2.component';
@@ -75,22 +77,15 @@ import { TablesWidget11Component } from './tables/tables-widget11/tables-widget1
 import { TablesWidget12Component } from './tables/tables-widget12/tables-widget12.component';
 import { TablesWidget13Component } from './tables/tables-widget13/tables-widget13.component';
 import { TablesWidget14Component } from './tables/tables-widget14/tables-widget14.component';
-// new
-import { CardsWidget20Component } from './_new/cards/cards-widget20/cards-widget20.component';
-import { CardsWidget17Component } from './_new/cards/cards-widget17/cards-widget17.component';
-import { ListsWidget26Component } from './_new/lists/lists-widget26/lists-widget26.component';
-import { EngageWidget10Component } from './_new/engage/engage-widget10/engage-widget10.component';
-import { CardsWidget7Component } from './_new/cards/cards-widget7/cards-widget7.component';
-import { TablesWidget16Component } from './_new/tables/tables-widget16/tables-widget16.component';
-import { NewChartsWidget8Component } from './_new/charts/new-charts-widget8/new-charts-widget8.component';
-import { CardsWidget18Component } from './_new/cards/cards-widget18/cards-widget18.component';
-import { SharedModule } from "../../../shared/shared.module";
+
 @NgModule({
   declarations: [
     // Advanced Tables
     AdvanceTablesWidget1Component,
     AdvanceTablesWidget2Component,
+    AdvanceTablesWidget4Component,
     AdvanceTablesWidget7Component,
+    AdvanceTablesWidget9Component,
     // Base Tables
     BaseTablesWidget1Component,
     BaseTablesWidget2Component,
@@ -158,14 +153,6 @@ import { SharedModule } from "../../../shared/shared.module";
     TablesWidget12Component,
     TablesWidget13Component,
     TablesWidget14Component,
-    CardsWidget20Component,
-    CardsWidget17Component,
-    ListsWidget26Component,
-    EngageWidget10Component,
-    CardsWidget7Component,
-    TablesWidget16Component,
-    NewChartsWidget8Component,
-    CardsWidget18Component,
   ],
   imports: [
     CommonModule,
@@ -173,13 +160,14 @@ import { SharedModule } from "../../../shared/shared.module";
     InlineSVGModule,
     NgApexchartsModule,
     NgbDropdownModule,
-    SharedModule
   ],
   exports: [
     // Advanced Tables
     AdvanceTablesWidget1Component,
     AdvanceTablesWidget2Component,
+    AdvanceTablesWidget4Component,
     AdvanceTablesWidget7Component,
+    AdvanceTablesWidget9Component,
     // Base Tables
     BaseTablesWidget1Component,
     BaseTablesWidget2Component,
@@ -247,16 +235,6 @@ import { SharedModule } from "../../../shared/shared.module";
     TablesWidget12Component,
     TablesWidget13Component,
     TablesWidget14Component,
-    // new
-    CardsWidget20Component,
-    CardsWidget17Component,
-    ListsWidget26Component,
-    EngageWidget10Component,
-    CardsWidget7Component,
-    TablesWidget16Component,
-    NewChartsWidget8Component,
-    TablesWidget16Component,
-    CardsWidget18Component
   ],
 })
 export class WidgetsModule {}

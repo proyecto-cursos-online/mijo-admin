@@ -2,7 +2,7 @@
 <div
   class="card card-custom bgi-no-repeat bgi-size-cover"
   [ngClass]="cssClass"
-  style="background-image: url('./assets/media/stock/600x600/img-16.jpg')"
+  style="background-image: url('./assets/media/stock-600x600/img-16.jpg')"
 >
   <!--begin::Body-->
   <div
@@ -16,7 +16,10 @@
 
     <a class="btn btn-link btn-link-warning font-weight-bold cursor-pointer">
       Create Report
-      <app-keenicon name="arrow-right" class=" ssvg-icon-lg text-warning"></app-keenicon>
+      <span
+        [inlineSVG]="'./assets/media/svg/icons/Navigation/Arrow-right.svg'"
+        class="svg-icon ssvg-icon-lg svg-icon-warning"
+      ></span>
     </a>
   </div>
   <!--end::Body-->

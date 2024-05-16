@@ -104,7 +104,10 @@
                 class="btn btn-lg btn-light-primary me-3"
                 (click)="prevStep()"
               >
-                <app-keenicon name="arrow-left" class="fs-3 ms-4 me-1"></app-keenicon>
+                <span
+                  [inlineSVG]="'./assets/media/icons/duotune/arrows/arr063.svg'"
+                  class="svg-icon svg-icon-4 me-1"
+                ></span>
                 Back
               </button>
             </ng-container>
@@ -121,7 +124,12 @@
                 <span class="indicator-label">
                   <ng-container *ngIf="currentStep$.value < formsCount - 1">
                     Continue {{ " " }}
-                    <app-keenicon name="arrow-right" class="fs-3 ms-2 me-0"></app-keenicon>
+                    <span
+                      [inlineSVG]="
+                        './assets/media/icons/duotune/arrows/arr064.svg'
+                      "
+                      class="svg-icon svg-icon-3 ms-2 me-0"
+                    ></span>
                   </ng-container>
                   <ng-container *ngIf="currentStep$.value === formsCount - 1">
                     Submit

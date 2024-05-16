@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IconUserModel } from '../../../_metronic/partials';
-import { ToastrService } from 'ngx-toastr';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
 @Component({
   selector: 'app-projects',
@@ -60,57 +56,7 @@ export class ProjectsComponent implements OnInit {
     { name: 'Rabbin Watterman', initials: 'S', color: 'danger' },
   ];
 
-  description:any;
-  page = 4;
-  pageSize = 10;
-  dropdownList:any = [];
-  selectedItems:any = [];
-  dropdownSettings:IDropdownSettings = {};
-  constructor(
-    private toastr: ToastrService,
-    public modalService: NgbModal,
-  ) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    // this.showSuccess();
-    // this.modalService.open()
-
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Bangaluru' },
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' },
-      { item_id: 5, item_text: 'New Delhi' }
-    ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' }
-    ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      // itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
-  }
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-  onSelectAll(items: any) {
-    console.log(items);
-  }
-  public onChange(event: any) {
-    this.description = event.editor.getData();
-  }
-  loadPage(page: number) {
-    console.log(page);
-  }
-  showSuccess() {
-    this.toastr.warning('Hello world!', 'Toastr fun!',{
-      timeOut: 20000,
-    });
-  }
+  ngOnInit(): void {}
 }

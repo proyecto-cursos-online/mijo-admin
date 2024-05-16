@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { InlineSVGModule } from 'ng-inline-svg-2';
 
 import { AccountRoutingModule } from './account-routing.module';
-import { AccountComponent } from './account.component';
+import { AccountComponent } from '../account/account.component';
 import { OverviewComponent } from './overview/overview.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ProfileDetailsComponent } from './settings/forms/profile-details/profile-details.component';
@@ -12,7 +13,6 @@ import { EmailPreferencesComponent } from './settings/forms/email-preferences/em
 import { NotificationsComponent } from './settings/forms/notifications/notifications.component';
 import { SignInMethodComponent } from './settings/forms/sign-in-method/sign-in-method.component';
 import { DropdownMenusModule, WidgetsModule } from '../../_metronic/partials';
-import {SharedModule} from "../../_metronic/shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -29,9 +29,9 @@ import {SharedModule} from "../../_metronic/shared/shared.module";
   imports: [
     CommonModule,
     AccountRoutingModule,
+    InlineSVGModule,
     DropdownMenusModule,
     WidgetsModule,
-    SharedModule,
   ],
 })
 export class AccountModule {}

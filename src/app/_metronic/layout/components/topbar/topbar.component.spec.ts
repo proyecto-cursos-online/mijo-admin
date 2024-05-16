@@ -5,7 +5,7 @@ import { TopbarComponent } from './topbar.component';
 describe('TopbarComponent', () => {
   let component: TopbarComponent;
   let fixture: ComponentFixture<TopbarComponent>;
-
+  
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ TopbarComponent ]

@@ -5,14 +5,10 @@
 @mixin scrollbar-color($color, $hover-color: null) {
     // Firefox
     scrollbar-color: $color transparent;
-    
+
     // Webkit
     &::-webkit-scrollbar-thumb {
         background-color: $color;
-    }
-
-    &::-webkit-scrollbar-corner {
-        background-color: transparent;
     }
 
     @if ($hover-color != null) {
@@ -24,10 +20,6 @@
             // Webkit
             &::-webkit-scrollbar-thumb {
                 background-color: $hover-color;
-            }
-
-            &::-webkit-scrollbar-corner {
-                background-color: transparent;
             }
         }
     }

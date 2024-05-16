@@ -3,8 +3,8 @@
 //
 
 // Variables
-$vis-border-color: var(--#{$prefix}border-color);
-$vis-border-dashed-color: var(--#{$prefix}border-dashed-color);
+$vis-border-color: $border-color;
+$vis-border-dashed-color: $border-dashed-color;
 
 // General
 .vis-timeline {
@@ -22,8 +22,8 @@ $vis-border-dashed-color: var(--#{$prefix}border-dashed-color);
             padding-right: 1rem;
             border-bottom: none;
             font-size: $h4-font-size;
-            font-weight: $font-weight-semibold;
-            color: var(--#{$prefix}gray-900);
+            font-weight: $font-weight-bold;
+            color: $gray-900;
         }
     }
 
@@ -38,19 +38,19 @@ $vis-border-dashed-color: var(--#{$prefix}border-dashed-color);
 
     .vis-item {
         position: absolute;
-        color: var(--#{$prefix}gray-700);
-        border-color: var(--#{$prefix}primary);
+        color: $gray-700;
+        border-color: $primary;
         border-width: 1px;
-        background-color: var(--#{$prefix}gray-100);
+        background-color: $gray-100;
 
         @if ($enable-rounded) {
             border-radius: $border-radius !important;
         }
 
         &.vis-selected {
-            background-color: var(--#{$prefix}warning-light);
-            color: var(--#{$prefix}gray-700);
-            border-color: var(--#{$prefix}warning);
+            background-color: $warning-light;
+            color: $gray-700;
+            border-color: $warning;
         }
 
         .vis-item-content {
@@ -63,10 +63,10 @@ $vis-border-dashed-color: var(--#{$prefix}border-dashed-color);
     .vis-time-axis {
         font-size: $font-size-sm;
         text-transform: uppercase;
-        font-weight: $font-weight-semibold;
+        font-weight: $font-weight-bold;
 
         .vis-text {
-            color: var(--#{$prefix}gray-400);
+            color: $gray-400;
         }
 
         .vis-grid.vis-minor {
@@ -95,7 +95,7 @@ $vis-border-dashed-color: var(--#{$prefix}border-dashed-color);
     }
 
     .vis-current-time {
-        background-color: var(--#{$prefix}success);
+        background-color: $success;
     }
 }
 

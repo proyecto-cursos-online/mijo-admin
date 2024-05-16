@@ -18,14 +18,14 @@
 	// Pagination outline
 	&.pagination-outline {
 		.page-link {
-			border: 1px solid var(--#{$prefix}border-color);
+			border: 1px solid $border-color;
 		}
 
 		.page-item {
-			&:hover:not(.disabled),
+			&:hover,
 		    &.active {
 			    .page-link {
-			        border-color: var(--#{$prefix}primary-light);
+			        border-color: $primary-light;
 				}	
 			}
 		}
@@ -65,8 +65,8 @@
 		/*rtl:end:ignore*/
 
 		.previous {
-			@include svg-bg-icon(arrow-start, $pagination-color);
-		}
+				@include svg-bg-icon(arrow-start, $pagination-color);
+			}
 
 		/*rtl:options:{"autoRename":false}*/
 		.next {
@@ -74,90 +74,91 @@
 		}
 	}
 
-	&:focus {
+	/*rtl:options:{"autoRename":false}*/
+	&.next,
+	&.previous {
 		.page-link {
-			color: var(--#{$prefix}pagination-focus-color);
+			background-color: $pagination-item-bg;
+			color: $pagination-color;
 
-			.svg-icon,
 			i {
-				color: var(--#{$prefix}pagination-focus-color);
-			}
-
-			.previous {
-				@include svg-bg-icon(arrow-start, var(--#{$prefix}pagination-focus-color));
-			}
-
-			/*rtl:options:{"autoRename":false}*/
-			.next {
-				@include svg-bg-icon(arrow-end, var(--#{$prefix}pagination-focus-color));
+				color: $pagination-color;
 			}
 		}
 	}
 
-	&:hover:not(.active):not(.offset):not(.disabled) {
+	&:focus {
 		.page-link {
-			color: var(--#{$prefix}pagination-hover-color);
-			
-			&.page-text {
-				background-color: transparent;	
-			}
+			color: $pagination-focus-color;
 
-			.svg-icon,
 			i {
-				color: var(--#{$prefix}pagination-hover-color);
+				color: $pagination-focus-color;
 			}
 
 			.previous {
-				@include svg-bg-icon(arrow-start, var(--#{$prefix}pagination-hover-color));
+				@include svg-bg-icon(arrow-start, $pagination-focus-color);
 			}
 
 			/*rtl:options:{"autoRename":false}*/
 			.next {
-				@include svg-bg-icon(arrow-end, var(--#{$prefix}pagination-hover-color));
+				@include svg-bg-icon(arrow-end, $pagination-focus-color);
+			}
+		}
+	}
+
+	&:hover:not(.offset) {
+		.page-link {
+			color: $pagination-hover-color;
+
+			i {
+				color: $pagination-hover-color;
+			}
+
+			.previous {
+				@include svg-bg-icon(arrow-start, $pagination-hover-color);
+			}
+
+			/*rtl:options:{"autoRename":false}*/
+			.next {
+				@include svg-bg-icon(arrow-end, $pagination-hover-color);
 			}
 		}
 	}
 
 	&.active {
 		.page-link {
-			color: var(--#{$prefix}pagination-active-color);
+			color: $pagination-active-color;
 
-			&.page-text {
-				background-color: transparent;	
-			}
-
-			.svg-icon,
 			i {
-				color: var(--#{$prefix}pagination-active-color);;
+				color: $pagination-active-color;
 			}
 				
 			.previous {
-				@include svg-bg-icon(arrow-start, var(--#{$prefix}pagination-active-color));
+				@include svg-bg-icon(arrow-start, $pagination-active-color);
 			}
 
 			/*rtl:options:{"autoRename":false}*/
 			.next {
-				@include svg-bg-icon(arrow-end, var(--#{$prefix}pagination-active-color));
+				@include svg-bg-icon(arrow-end, $pagination-active-color);
 			}
 		}
 	}
 
 	&.disabled {
 		.page-link {
-			color: var(--#{$prefix}pagination-disabled-color);
+			color: $pagination-disabled-color;
 
-			.svg-icon,
 			i {
-				color: var(--#{$prefix}pagination-disabled-color);
+				color: $pagination-disabled-color;
 			}
 
 			.previous {
-				@include svg-bg-icon(arrow-start, var(--#{$prefix}pagination-disabled-color));
+				@include svg-bg-icon(arrow-start, $pagination-disabled-color);
 			}
 
 			/*rtl:options:{"autoRename":false}*/
 			.next {
-				@include svg-bg-icon(arrow-end, var(--#{$prefix}pagination-disabled-color));
+				@include svg-bg-icon(arrow-end, $pagination-disabled-color);
 			}
 		}
 	}
@@ -174,3 +175,4 @@
 		}
 	}
 }
+

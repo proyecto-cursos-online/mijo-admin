@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { ICreateAccount, inits } from '../create-account.helper';
 
@@ -6,7 +6,7 @@ import { ICreateAccount, inits } from '../create-account.helper';
   selector: 'app-vertical',
   templateUrl: './vertical.component.html',
 })
-export class VerticalComponent implements OnInit, OnDestroy {
+export class VerticalComponent implements OnInit {
   formsCount = 5;
   account$: BehaviorSubject<ICreateAccount> =
     new BehaviorSubject<ICreateAccount>(inits);

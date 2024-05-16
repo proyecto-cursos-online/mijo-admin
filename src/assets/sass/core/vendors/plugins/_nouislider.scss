@@ -6,7 +6,7 @@
 // Base
 .noUi-target {
     border: 0;
-    background: var(--#{$prefix}gray-100);
+    background: if(isDarkMode(), $gray-200, $gray-100);
     box-shadow:none;
 
     &.noUi-horizontal {
@@ -51,13 +51,12 @@
     }
 
     .noUi-connect {
-        background: var(--#{$prefix}component-active-bg);
+        background: $component-active-bg;
     }
 
     .noUi-handle {
-        background-color: $white; //var(--#{$prefix}body-bg);
-        border: 1px solid var(--#{$prefix}gray-200);
-        box-shadow:var(--#{$prefix}box-shadow-sm)
+        border: 1px solid $gray-200;
+        box-shadow: 0 3px 6px -3px rgba(#000, 0.7);
     }
 
     // Small size
@@ -76,26 +75,26 @@
     // NoUiSlider success color option
     .noUi-target.noUi-target-#{$name} {
         .noUi-connects {
-            background-color: var(--#{$prefix}#{$name}-light);
+            background-color: theme-light-color($name);
 
             .noUi-connect {
-                background-color: var(--#{$prefix}#{$name});
+                background-color: $value;
             }
         }
 
         .noUi-handle {
-            border: 1px solid var(--#{$prefix}#{$name});
-            box-shadow: 0 3px 6px -3px rgba(var(--#{$prefix}#{$name}), 0.7);
-            background-color: var(--#{$prefix}#{$name});
+            border: 1px solid $value;
+            box-shadow: 0 3px 6px -3px rgba($value, 0.7);
+            background-color: $value;
         }
     }
 }
 
 // Tooltip
 .noUi-tooltip {
-    box-shadow: var(--#{$prefix}tooltip-box-shadow);
-    background: var(--#{$prefix}tooltip-bg);
-    color: var(--#{$prefix}tooltip-color);
+    box-shadow: $tooltip-box-shadow;
+    background: $tooltip-bg;
+    color: $tooltip-color;
     font-size: $tooltip-font-size;
     border: 0;
     padding: 0.5rem 0.75rem;

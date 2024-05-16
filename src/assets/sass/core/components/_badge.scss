@@ -58,18 +58,12 @@
 
 @each $name, $value in $theme-colors {
     .badge-#{$name} {
-        color: var(--#{$prefix}#{$name}-inverse);
-        background-color: var(--#{$prefix}#{$name});
-
-        &.badge-outline {
-            border: 1px solid var(--#{$prefix}#{$name});
-            color: var(--#{$prefix}#{$name});
-            background-color: transparent;
-        }
+        color: theme-inverse-color($name);
+        background-color: $value;
     }
 
     .badge-light-#{$name} {
-        color: var(--#{$prefix}#{$name});
-        background-color: var(--#{$prefix}#{$name}-light);
-    }    
+        color: $value;
+        background-color: theme-light-color($name);
+    }
 }

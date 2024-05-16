@@ -1,7 +1,7 @@
 <div class="d-flex flex-wrap flex-stack mb-6">
   <h3 class="fw-bolder my-2">
     My Projects
-    <span class="fs-6 text-gray-500 fw-bold ms-1">Active</span>
+    <span class="fs-6 text-gray-400 fw-bold ms-1">Active</span>
   </h3>
 
   <div class="d-flex flex-wrap my-2">
@@ -30,22 +30,6 @@
 </div>
 
 <div class="row g-6 g-xl-9">
-  <!-- <ckeditor [data]="description" (change)="onChange($event)"></ckeditor> -->
-  <ngb-pagination [collectionSize]="70" [(page)]="page"
-  [pageSize]="pageSize"
-  (pageChange)="loadPage($event)" 
-  [boundaryLinks]="true" />
-
-  <ng-multiselect-dropdown
-    [placeholder]="'custom placeholder'"
-    [settings]="dropdownSettings"
-    [data]="dropdownList"
-    [(ngModel)]="selectedItems"
-    (onSelect)="onItemSelect($event)"
-    (onSelectAll)="onSelectAll($event)"
-  >
-  </ng-multiselect-dropdown>
-
   <div class="col-md-6 col-xl-4">
     <app-card2
       icon="./assets/media/svg/brand-logos/plurk.svg"

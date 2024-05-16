@@ -65,7 +65,7 @@ export class ChatInnerComponent implements OnInit {
   }
 
   getMessageCssClass(message: MessageModel): string {
-    return `p-5 rounded text-gray-900 fw-bold mw-lg-400px bg-light-${
+    return `p-5 rounded text-dark fw-bold mw-lg-400px bg-light-${
       message.type === 'in' ? 'info' : 'primary'
     } text-${message.type === 'in' ? 'start' : 'end'}`;
   }

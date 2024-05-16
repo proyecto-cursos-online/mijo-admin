@@ -32,9 +32,8 @@ export class AuthService implements OnDestroy {
   set currentUserValue(user: UserType) {
     this.currentUserSubject.next(user);
   }
-
-  token:any = null;
-  user:any = null;
+  token:any=null;
+  user:any=null;
   constructor(
     private authHttpService: AuthHTTPService,
     private router: Router,
@@ -51,12 +50,12 @@ export class AuthService implements OnDestroy {
   // public methods
   login(email: string, password: string): Observable<any> {
     this.isLoadingSubject.next(true);
-    return this.http.post(URL_SERVICIOS+"/auth/login",{email: email,password: password}).pipe(
+    return this.http.post(URL_SERVICIOS+"/auth/login",{email: email, password: password}).pipe(
       map((auth: any) => {
-        console.log(auth);
         const result = this.setAuthFromLocalStorage(auth);
         return result;
       }),
+      switchMap(() => this.getUserByToken()),
       catchError((err) => {
         console.error('err', err);
         return of(undefined);
@@ -81,7 +80,7 @@ export class AuthService implements OnDestroy {
 
     this.isLoadingSubject.next(true);
     return of(auth).pipe(
-      map((user: any) => {
+      map((user: UserType) => {
         if (user) {
           this.currentUserSubject.next(user);
         } else {
@@ -120,14 +119,14 @@ export class AuthService implements OnDestroy {
   private setAuthFromLocalStorage(auth: any): boolean {
     // store auth authToken/refreshToken/epiresIn in local storage to keep user logged in between page refreshes
     if (auth && auth.access_token) {
-      localStorage.setItem("token",auth.access_token);
+      localStorage.setItem("token", auth.access_token);
       localStorage.setItem("user", JSON.stringify(auth.user));
       return true;
     }
     return false;
   }
 
-  private getAuthFromLocalStorage(): any {
+  private getAuthFromLocalStorage(): any | undefined {
     try {
       const lsValue = localStorage.getItem("user");
       if (!lsValue) {

@@ -58,8 +58,8 @@ export class PageInfoService {
   }
 
   public calculateTitle() {
-    const asideTitle = this.calculateTitleInMenu('kt_app_sidebar');
-    const headerTitle = this.calculateTitleInMenu('kt_app_header_wrapper');
+    const asideTitle = this.calculateTitleInMenu('asideMenu');
+    const headerTitle = this.calculateTitleInMenu('#kt_header_menu');
     const title = asideTitle || headerTitle || '';
     this.setTitle(title);
   }
@@ -89,10 +89,9 @@ export class PageInfoService {
   }
 
   public calculateBreadcrumbs() {
-    const asideBc = this.calculateBreadcrumbsInMenu('kt_app_sidebar');
-    const headerBc = this.calculateBreadcrumbsInMenu('kt_app_header_wrapper');
+    const asideBc = this.calculateBreadcrumbsInMenu('asideMenu');
+    const headerBc = this.calculateBreadcrumbsInMenu('#kt_header_menu');
     const bc = asideBc && asideBc.length > 0 ? asideBc : headerBc;
-
     if (!bc) {
       this.setBreadcrumbs([]);
       return;

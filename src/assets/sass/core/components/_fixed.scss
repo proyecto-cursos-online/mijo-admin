@@ -8,7 +8,7 @@
 
         .fixed-top#{$infix} {
             position: fixed;
-            z-index: $fixed-z-index;
+            z-index: get($fixed, z-index);
             top: 0;
             left: 0;
             right: 0;    

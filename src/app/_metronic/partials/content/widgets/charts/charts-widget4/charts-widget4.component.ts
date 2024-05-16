@@ -20,9 +20,9 @@ function getChartOptions() {
   const borderColor = getCSSVariableValue('--bs-gray-200');
 
   const baseColor = getCSSVariableValue('--bs-success');
-  const baseLightColor = getCSSVariableValue('--bs-success-light');
+  const baseLightColor = getCSSVariableValue('--bs-light-success');
   const secondaryColor = getCSSVariableValue('--bs-warning');
-  const secondaryLightColor = getCSSVariableValue('--bs-warning-light');
+  const secondaryLightColor = getCSSVariableValue('--bs-light-warning');
 
   return {
     series: [

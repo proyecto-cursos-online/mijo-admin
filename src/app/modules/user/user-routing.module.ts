@@ -5,11 +5,11 @@ import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path:'',
     component: UserComponent,
-    children: [
+    children:[
       {
-        path: 'list',
+        path:'list',
         component: UserListComponent,
       }
     ]

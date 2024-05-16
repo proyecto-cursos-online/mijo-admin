@@ -1,6 +1,6 @@
 <div
   id="kt_drawer_chat"
-  class="bg-body"
+  class="bg-white"
   data-kt-drawer="true"
   data-kt-drawer-name="chat"
   data-kt-drawer-activate="true"
@@ -30,7 +30,7 @@
             <span
               class="badge badge-success badge-circle w-10px h-10px me-1"
             ></span
-            ><span class="fs-7 fw-bold text-gray-500">Active</span>
+            ><span class="fs-7 fw-bold text-gray-400">Active</span>
           </div>
         </div>
       </div>
@@ -49,8 +49,11 @@
           class="btn btn-sm btn-icon btn-active-light-primary"
           id="kt_drawer_chat_close"
         >
-          <span class="svg-icon fs-2"></span>
-          <app-keenicon name="cross" class="fs-2"></app-keenicon>
+          <span class="svg-icon svg-icon-2"></span>
+          <span
+            [inlineSVG]="'./assets/media/icons/duotune/arrows/arr061.svg'"
+            class="svg-icon svg-icon-2"
+          ></span>
         </div>
       </div>
     </div>

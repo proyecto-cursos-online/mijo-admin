@@ -50,7 +50,12 @@
                 Max Smith
               </a>
               <a class="cursor-pointer">
-                <app-keenicon name="verify" class="fs-1 text-primary"></app-keenicon>
+                <span
+                  [inlineSVG]="
+                    './assets/media/icons/duotune/general/gen026.svg'
+                  "
+                  class="svg-icon svg-icon-1 svg-icon-primary"
+                ></span>
               </a>
               <a
                 class="
@@ -74,38 +79,53 @@
                 class="
                   d-flex
                   align-items-center
-                  text-gray-500 text-hover-primary
+                  text-gray-400 text-hover-primary
                   me-5
                   mb-2
                   cursor-pointer
                 "
               >
-                <app-keenicon name="profile-circle" class="fs-4 me-1"></app-keenicon>
+                <span
+                  [inlineSVG]="
+                    './assets/media/icons/duotune/communication/com006.svg'
+                  "
+                  class="svg-icon svg-icon-4 me-1"
+                ></span>
                 Developer
               </a>
               <a
                 class="
                   d-flex
                   align-items-center
-                  text-gray-500 text-hover-primary
+                  text-gray-400 text-hover-primary
                   me-5
                   mb-2
                   cursor-pointer
                 "
               >
-                <app-keenicon name="geolocation" class="fs-4 me-1"></app-keenicon>
+                <span
+                  [inlineSVG]="
+                    './assets/media/icons/duotune/general/gen018.svg'
+                  "
+                  class="svg-icon svg-icon-4 me-1"
+                ></span>
                 SF, Bay Area
               </a>
               <a
                 class="
                   d-flex
                   align-items-center
-                  text-gray-500 text-hover-primary
+                  text-gray-400 text-hover-primary
                   mb-2
                   cursor-pointer
                 "
               >
-                <app-keenicon name="sms" class="fs-4 me-1"></app-keenicon>
+                <span
+                  [inlineSVG]="
+                    './assets/media/icons/duotune/communication/com011.svg'
+                  "
+                  class="svg-icon svg-icon-4 me-1"
+                ></span>
                 max@kt.com
               </a>
             </div>
@@ -116,7 +136,10 @@
               class="btn btn-sm btn-light me-2 cursor-pointer"
               id="kt_user_follow_button"
             >
-              <app-keenicon name="phone" class="fs-3 d-none"></app-keenicon>
+              <span
+                [inlineSVG]="'./assets/media/icons/duotune/arrows/arr012.svg'"
+                class="svg-icon svg-icon-3 d-none"
+              ></span>
               <span class="indicator-label">Follow</span>
               <span class="indicator-progress">
                 Please wait...
@@ -163,11 +186,16 @@
                 "
               >
                 <div class="d-flex align-items-center">
-                  <app-keenicon name="arrow-up" class="fs-3 text-success me-2"></app-keenicon>
+                  <span
+                    [inlineSVG]="
+                      './assets/media/icons/duotune/arrows/arr066.svg'
+                    "
+                    class="svg-icon svg-icon-3 svg-icon-success me-2"
+                  ></span>
                   <div class="fs-2 fw-bolder">4500$</div>
                 </div>
 
-                <div class="fw-bold fs-6 text-gray-500">Earnings</div>
+                <div class="fw-bold fs-6 text-gray-400">Earnings</div>
               </div>
 
               <div
@@ -182,11 +210,16 @@
                 "
               >
                 <div class="d-flex align-items-center">
-                  <app-keenicon name="arrow-down" class="fs-3 text-danger me-2"></app-keenicon>
+                  <span
+                    [inlineSVG]="
+                      './assets/media/icons/duotune/arrows/arr065.svg'
+                    "
+                    class="svg-icon svg-icon-3 svg-icon-danger me-2"
+                  ></span>
                   <div class="fs-2 fw-bolder">75</div>
                 </div>
 
-                <div class="fw-bold fs-6 text-gray-500">Projects</div>
+                <div class="fw-bold fs-6 text-gray-400">Projects</div>
               </div>
 
               <div
@@ -201,11 +234,16 @@
                 "
               >
                 <div class="d-flex align-items-center">
-                  <app-keenicon name="arrow-up" class="fs-3 text-success me-2"></app-keenicon>
+                  <span
+                    [inlineSVG]="
+                      './assets/media/icons/duotune/arrows/arr066.svg'
+                    "
+                    class="svg-icon svg-icon-3 svg-icon-success me-2"
+                  ></span>
                   <div class="fs-2 fw-bolder">60%</div>
                 </div>
 
-                <div class="fw-bold fs-6 text-gray-500">Success Rate</div>
+                <div class="fw-bold fs-6 text-gray-400">Success Rate</div>
               </div>
             </div>
           </div>
@@ -220,7 +258,7 @@
             "
           >
             <div class="d-flex justify-content-between w-100 mt-auto mb-2">
-              <span class="fw-bold fs-6 text-gray-500"
+              <span class="fw-bold fs-6 text-gray-400"
                 >Profile Compleation</span
               >
               <span class="fw-bolder fs-6">50%</span>

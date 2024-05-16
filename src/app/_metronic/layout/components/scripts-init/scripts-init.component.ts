@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ResolveEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Observable, Subscription } from 'rxjs';
-import { LayoutService } from '../../core/layout.service';
+import { LayoutService, LayoutType } from '../../core/layout.service';
 import {
   ToggleComponent,
   ScrollTopComponent,
@@ -12,7 +12,6 @@ import {
   ScrollComponent,
 } from '../../../kt/components';
 import { PageInfoService } from '../../core/page-info.service';
-import { ILayout } from '../../core/configs/config';
 
 @Component({
   selector: 'app-scripts-init',
@@ -20,6 +19,7 @@ import { ILayout } from '../../core/configs/config';
 })
 export class ScriptsInitComponent implements OnInit, OnDestroy {
   private unsubscribe: Subscription[] = [];
+  private layoutConfig$: Observable<LayoutType>;
   constructor(
     private layout: LayoutService,
     private pageInfo: PageInfoService,
@@ -40,12 +40,10 @@ export class ScriptsInitComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.pluginsInitialization();
-    const layoutUpdateSubscription = this.layout.layoutConfigSubject
-      .asObservable()
-      .subscribe(() => {
-        this.pluginsReInitialization();
-      });
+    this.layoutConfig$ = this.layout.layoutConfigSubject.asObservable();
+    const layoutUpdateSubscription = this.layoutConfig$.subscribe(() => {
+      this.pluginsInitialization();
+    });
     this.unsubscribe.push(layoutUpdateSubscription);
   }
 
@@ -58,17 +56,6 @@ export class ScriptsInitComponent implements OnInit, OnDestroy {
       MenuComponent.bootstrap();
       ScrollComponent.bootstrap();
     }, 200);
-  }
-
-  pluginsReInitialization() {
-    setTimeout(() => {
-      ToggleComponent.reinitialization();
-      ScrollTopComponent.reinitialization();
-      DrawerComponent.reinitialization();
-      StickyComponent.bootstrap();
-      MenuComponent.reinitialization();
-      ScrollComponent.reinitialization();
-    }, 100);
   }
 
   ngOnDestroy() {

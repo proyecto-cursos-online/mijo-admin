@@ -12,6 +12,8 @@
 
 # dependencies
 /node_modules
+yarn.lock
+package-lock.json
 
 # profiling files
 chrome-profiler-events*.json
@@ -26,7 +28,6 @@ chrome-profiler-events*.json
 *.sublime-workspace
 
 # IDE - VSCode
-/.vscode
 .vscode
 .vscode/*
 !.vscode/settings.json
@@ -44,7 +45,6 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
-.angular
 
 # System Files
 .DS_Store

@@ -2,16 +2,23 @@
 // Prismjs
 //
 
-// Highlight
+$base-color: if(isDarkMode(), #1b1b29, #1e1e3f);
+$scrollbar-color: if(isDarkMode(), lighten(#1b1b29, 6%), lighten(#1e1e3f, 12%));
+$btn-bg: lighten($base-color, 9%);
+$btn-hover-bg: lighten($base-color, 12%);
+$btn-color: rgba($white, 0.75);
+$btn-hover-color: $primary;
+
+// highlight
 .highlight {
     position: relative;
-    background: var(--#{$prefix}prismjs-bg);
+    background: $base-color;
     border-radius: $border-radius;
     padding: 1.75rem 1.5rem 1.75rem 1.5rem;
 
     // Tabs
     .nav {
-        border-bottom: 1px solid var(--#{$prefix}prismjs-border);
+        border-bottom: 1px solid rgba(#ffffff, 0.1);
         padding-bottom: 1rem;
         margin-bottom: 1rem;
         margin-top: -0.25rem;
@@ -25,15 +32,15 @@
             font-weight: 500;
             padding: 0.35rem 1rem;
             border-radius: $border-radius;
-            color: var(--#{$prefix}prismjs-btn-color);
+            color: $btn-color;
             transition: $transition-base;
             background-color: transparent;
 
             &:focus,
             &.active {
                 transition: $transition-base;
-                background-color: var(--#{$prefix}prismjs-btn-bg-hover);
-                color: var(--#{$prefix}prismjs-btn-color-hover);
+                background-color: $btn-bg;
+                color: $btn-color;
             }
         }
     }
@@ -47,14 +54,14 @@
         font-weight: 500;
         padding: 0.35rem 1rem !important;
         transition: $transition-base;
-        background-color: var(--#{$prefix}prismjs-btn-bg);
-        color: var(--#{$prefix}prismjs-btn-color);
+        background-color: $btn-bg;
+        color: $btn-color;
 
         &:focus,
         &:hover {
             transition: $transition-base;
-            background-color: var(--#{$prefix}prismjs-btn-bg-hover);
-            color: var(--#{$prefix}prismjs-btn-color-hover);
+            background-color: $btn-hover-bg;
+            color: $btn-hover-color;
         }
     }
 
@@ -72,7 +79,7 @@
             padding: 0;
             margin: 0;
 
-            @include scrollbar-color( var(--#{$prefix}prismjs-scrollbar-color), var(--#{$prefix}prismjs-scrollbar-color-hover));
+            @include scrollbar-color($scrollbar-color);
 
             code[class*="language-"] {
                 padding: 0;

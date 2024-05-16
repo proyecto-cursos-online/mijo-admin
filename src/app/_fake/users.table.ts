@@ -18,6 +18,25 @@ export class UsersTable {
       language: 'en',
       timeZone: 'International Date Line West',
       website: 'https://keenthemes.com',
+      emailSettings: {
+        emailNotification: true,
+        sendCopyToPersonalEmail: false,
+        activityRelatesEmail: {
+          youHaveNewNotifications: false,
+          youAreSentADirectMessage: false,
+          someoneAddsYouAsAsAConnection: true,
+          uponNewOrder: false,
+          newMembershipApproval: false,
+          memberRegistration: true,
+        },
+        updatesFromKeenthemes: {
+          newsAboutKeenthemesProductsAndFeatureUpdates: false,
+          tipsOnGettingMoreOutOfKeen: false,
+          thingsYouMissedSindeYouLastLoggedIntoKeen: true,
+          newsAboutMetronicOnPartnerProductsAndOtherServices: true,
+          tipsOnMetronicBusinessProducts: true,
+        },
+      },
       communication: {
         email: true,
         sms: true,
@@ -58,6 +77,25 @@ export class UsersTable {
         sms: true,
         phone: false,
       },
+      emailSettings: {
+        emailNotification: true,
+        sendCopyToPersonalEmail: false,
+        activityRelatesEmail: {
+          youHaveNewNotifications: false,
+          youAreSentADirectMessage: false,
+          someoneAddsYouAsAsAConnection: true,
+          uponNewOrder: false,
+          newMembershipApproval: false,
+          memberRegistration: true,
+        },
+        updatesFromKeenthemes: {
+          newsAboutKeenthemesProductsAndFeatureUpdates: false,
+          tipsOnGettingMoreOutOfKeen: false,
+          thingsYouMissedSindeYouLastLoggedIntoKeen: true,
+          newsAboutMetronicOnPartnerProductsAndOtherServices: true,
+          tipsOnMetronicBusinessProducts: true,
+        },
+      },
       address: {
         addressLine: '3487  Ingram Road',
         city: 'Greensboro',
@@ -92,6 +130,25 @@ export class UsersTable {
         email: true,
         sms: true,
         phone: false,
+      },
+      emailSettings: {
+        emailNotification: true,
+        sendCopyToPersonalEmail: false,
+        activityRelatesEmail: {
+          youHaveNewNotifications: false,
+          youAreSentADirectMessage: false,
+          someoneAddsYouAsAsAConnection: true,
+          uponNewOrder: false,
+          newMembershipApproval: false,
+          memberRegistration: true,
+        },
+        updatesFromKeenthemes: {
+          newsAboutKeenthemesProductsAndFeatureUpdates: false,
+          tipsOnGettingMoreOutOfKeen: false,
+          thingsYouMissedSindeYouLastLoggedIntoKeen: true,
+          newsAboutMetronicOnPartnerProductsAndOtherServices: true,
+          tipsOnMetronicBusinessProducts: true,
+        },
       },
       address: {
         addressLine: '1467  Griffin Street',

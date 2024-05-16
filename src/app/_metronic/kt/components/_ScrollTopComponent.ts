@@ -99,11 +99,13 @@ class ScrollTopComponent {
   }
 
   // Static methods
-  public static getInstance = (el: HTMLElement): ScrollTopComponent | undefined => {
+  public static getInstance = (el: HTMLElement) => {
     const scrollTop = DataUtil.get(el, 'scrolltop')
     if (scrollTop) {
-      return scrollTop as ScrollTopComponent
+      return scrollTop
     }
+
+    return null
   }
 
   public static createInstances = (selector: string) => {

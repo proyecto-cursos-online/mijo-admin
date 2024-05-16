@@ -1,5 +1,5 @@
 <div class="pb-10 pb-lg-15">
-  <h2 class="fw-bolder d-flex align-items-center text-gray-900">
+  <h2 class="fw-bolder d-flex align-items-center text-dark">
     Choose Account Type
     <i
       class="fas fa-exclamation-circle ms-2 fs-7"
@@ -7,7 +7,7 @@
     ></i>
   </h2>
 
-  <div class="text-gray-500 fw-bold fs-6">
+  <div class="text-gray-400 fw-bold fs-6">
     If you need more info, please check out
     <a href="#" class="link-primary fw-bolder"> Help Page </a>
     .
@@ -35,12 +35,15 @@
         "
         for="kt_create_account_form_account_type_personal"
       >
-        <app-keenicon name="address-book" class="fs-1 me-5"></app-keenicon>
+        <span
+          [inlineSVG]="'./assets/media/icons/duotune/communication/com005.svg'"
+          class="svg-icon svg-icon-3x me-5"
+        ></span>
         <span class="d-block fw-bold text-start">
-          <span class="text-gray-900 fw-bolder d-block fs-4 mb-2"
+          <span class="text-dark fw-bolder d-block fs-4 mb-2"
             >Personal Account</span
           >
-          <span class="text-gray-500 fw-bold fs-6">
+          <span class="text-gray-400 fw-bold fs-6">
             If you need more info, please check it out
           </span>
         </span>
@@ -65,12 +68,16 @@
         "
         for="kt_create_account_form_account_type_corporate"
       >
-        <app-keenicon name="briefcase" class="fs-1 me-5"></app-keenicon>
+        <span
+          [inlineSVG]="'./assets/media/icons/duotune/finance/fin006.svg'"
+          class="svg-icon svg-icon-3x me-5"
+        ></span>
+
         <span class="d-block fw-bold text-start">
-          <span class="text-gray-900 fw-bolder d-block fs-4 mb-2"
+          <span class="text-dark fw-bolder d-block fs-4 mb-2"
             >Corporate Account</span
           >
-          <span class="text-gray-500 fw-bold fs-6">
+          <span class="text-gray-400 fw-bold fs-6">
             Create corporate account to mane users
           </span>
         </span>

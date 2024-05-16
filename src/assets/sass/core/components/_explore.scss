@@ -19,7 +19,7 @@ $explore-danger: #F1416C;
 $explore-warning-inverse: $white;
 
 .explore-btn-toggle {
-    color: var(--#{$prefix}gray-600);
+    color: $gray-600;
     background-color: $white;
 
     &:hover,
@@ -54,17 +54,17 @@ $explore-warning-inverse: $white;
 
 .explore-btn-secondary {	
 	border: 0;
-    color: var(--#{$prefix}gray-600);
-    background-color: var(--#{$prefix}gray-100);
+    color: $gray-600;
+    background-color: $gray-100;
 
     &:hover {
-        color: var(--#{$prefix}gray-800);
-        background-color: var(--#{$prefix}gray-200);
+        color: $gray-800;
+        background-color: $gray-200;
     }
 }
 
 .explore-btn-outline {
-    border: 1px dashed var(--#{$prefix}gray-300) !important;
+    border: 1px dashed $gray-300 !important;
 
     &:hover,
     &.active {
