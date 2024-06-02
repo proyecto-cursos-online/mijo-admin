@@ -24,6 +24,8 @@ export class UserEditComponent implements OnInit {
   is_instructor: any = null;
   profesion: any = null;
   description: any = null;
+  role_id: any = null;
+  
   constructor(
     public toaster: Toaster,
     public modal: NgbActiveModal,
@@ -32,6 +34,7 @@ export class UserEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = this.userService.isLoading$;
+    console.log(this.user.role.id)
     this.name = this.user.name;
     this.IMAGEN_PREV = this.user.avatar;
     this.surname = this.user.surname;
@@ -41,7 +44,10 @@ export class UserEditComponent implements OnInit {
     this.is_instructor= this.user.is_instructor;
     this.profesion= this.user.profesion;
     this.description = this.user.description;
+    this.role_id = this.user.role.id;
+    
   }
+  
   processAvatar($event: any) {
     if ($event.target.files[0].type.indexOf("image") < 0) {
       this.toaster.open({ text: 'Solamente Imagenes', caption: 'Alerta', type: 'danger' })
@@ -52,6 +58,7 @@ export class UserEditComponent implements OnInit {
     reader.readAsDataURL(this.FILE_AVATAR);
     reader.onloadend = () => this.IMAGEN_PREV = reader.result;
   }
+  
   store() {
     if (!this.name ||
       !this.surname ||

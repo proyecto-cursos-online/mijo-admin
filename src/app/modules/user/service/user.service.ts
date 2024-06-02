@@ -19,7 +19,7 @@ export class UserService {
     this.isLoading$ = this.isLoadingSubject.asObservable();
   }
 
-  listUsers(search:any, state:any) {
+  listUsers(search:any, state:any, type_user:any) {
     this.isLoadingSubject.next(true);
     let headers = new HttpHeaders({
       Authorization: 'Bearer' + this.authservice.token,
@@ -29,6 +29,8 @@ export class UserService {
       LINK += "&search="+search;
     }if (state) {
       LINK += "&state="+state;
+    }if (type_user) {
+      LINK += "&type_user="+type_user;
     }
     let URL = URL_SERVICIOS + '/users'+LINK;
 

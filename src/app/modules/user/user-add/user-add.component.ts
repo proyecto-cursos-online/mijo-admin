@@ -17,6 +17,7 @@ export class UserAddComponent implements OnInit {
   repit_password: any = null;
   IMAGEN_PREV: any = 'assets/media/avatars/300-6.jpg';
   FILE_AVATAR: any = 'null'
+  role_id: any = null;
 
   isLoading:any;
   constructor(
@@ -54,9 +55,13 @@ export class UserAddComponent implements OnInit {
     formData.append("surname", this.surname);
     formData.append("email", this.email);
     formData.append("password", this.password);
-    formData.append("role_id", '1');
+    formData.append("role_id", this.role_id);
     formData.append("state", '1');
-    formData.append("type_user", '2');
+    if (this.role_id == 1) {
+      formData.append("type_user", '2');
+    } else {
+      formData.append("type_user", '1');
+    }
     formData.append("imagen", this.FILE_AVATAR);
 
     this.userService.register(formData).subscribe((resp:any)=>{
