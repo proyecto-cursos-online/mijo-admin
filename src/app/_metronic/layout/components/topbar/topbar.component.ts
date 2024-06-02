@@ -15,7 +15,7 @@ export class TopbarComponent implements OnInit {
   toolbarUserAvatarHeightClass = 'symbol-30px symbol-md-40px';
   toolbarButtonIconSizeClass = 'svg-icon-1';
   headerLeft: string = 'menu';
-
+  
   constructor(private layout: LayoutService, public auth: AuthService) { }
 
   ngOnInit(): void {
