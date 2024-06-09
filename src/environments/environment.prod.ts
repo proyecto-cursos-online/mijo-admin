@@ -156,6 +156,9 @@ export const environment = {
       'thumbnail': './assets/media/demos/demo20.png'
     },
   },
+  URL_BACKEND: 'http://mijo-api.incadevs.com/',
+  URL_SERVICIOS: 'http://mijo-api.incadevs.com/api',
+  URL_FROTEND: 'http://mijo-admin.incadevs.com',
 };
 
 /*
