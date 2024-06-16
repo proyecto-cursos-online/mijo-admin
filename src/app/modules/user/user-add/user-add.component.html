@@ -3,7 +3,7 @@
     <!--begin::Modal header-->
     <div class="modal-header" id="kt_modal_add_user_header">
         <!--begin::Modal title-->
-        <h2 class="fw-bolder">Add User</h2>
+        <h2 class="fw-bolder">Agregar Usuario</h2>
         <!--end::Modal title-->
         <!--begin::Close-->
         <div class="btn btn-icon btn-sm btn-active-icon-primary" (click)="this.modal.dismiss()">
@@ -33,7 +33,7 @@
                 <!--begin::Input group-->
                 <div class="fv-row mb-7">
                     <!--begin::Label-->
-                    <label class="d-block fw-bold fs-6 mb-5">Avatar</label>
+                    <label class="d-block fw-bold fs-6 mb-5">Foto de perfil</label>
                     <!--end::Label-->
                     <!--begin::Image input-->
                     <div class="image-input image-input-outline" data-kt-image-input="true"
@@ -62,7 +62,7 @@
                     </div>
                     <!--end::Image input-->
                     <!--begin::Hint-->
-                    <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
+                    <div class="form-text">Tipos de archivo permitidos: png, jpg, jpeg.</div>
                     <!--end::Hint-->
                 </div>
                 <!--end::Input group-->
@@ -73,7 +73,7 @@
                     <!--end::Label-->
                     <!--begin::Input-->
                     <input type="text" name="name" class="form-control form-control-solid mb-3 mb-lg-0"
-                        [(ngModel)]="name" placeholder="Full name" value="Emma" />
+                        [(ngModel)]="name" placeholder="Nombres Completos" value="Emma" />
                     <!--end::Input-->
                 </div>
                 <!--end::Input group-->
@@ -84,7 +84,7 @@
                     <!--end::Label-->
                     <!--begin::Input-->
                     <input type="text" name="surname" class="form-control form-control-solid mb-3 mb-lg-0"
-                        [(ngModel)]="surname" placeholder="Full name" value="Smith" />
+                        [(ngModel)]="surname" placeholder="Apellidos Completos" value="Smith" />
                     <!--end::Input-->
                 </div>
                 <!--end::Input group-->
@@ -95,7 +95,7 @@
                     <!--end::Label-->
                     <!--begin::Input-->
                     <input type="email" name="email" class="form-control form-control-solid mb-3 mb-lg-0"
-                        [(ngModel)]="email" placeholder="example@domain.com" />
+                        [(ngModel)]="email" placeholder="ejemplo@gmail.com" />
                     <!--end::Input-->
                 </div>
                 <!--end::Input group-->
