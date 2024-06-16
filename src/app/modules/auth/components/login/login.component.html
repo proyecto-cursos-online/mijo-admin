@@ -36,7 +36,7 @@
   <ng-container *ngIf="hasError">
     <div class="mb-lg-15 alert alert-danger">
       <div class="alert-text font-weight-bold">
-        The login details are incorrect
+        Credenciales inconrrectas
       </div>
     </div>
   </ng-container>
@@ -60,7 +60,7 @@
       [ngTemplateOutlet]="formError"
       [ngTemplateOutletContext]="{
         validation: 'required',
-        message: 'Se requiere contraseña',
+        message: 'Se requiere correo',
         control: loginForm.controls['email']
       }"
     ></ng-container>
@@ -68,7 +68,7 @@
       [ngTemplateOutlet]="formError"
       [ngTemplateOutletContext]="{
         validation: 'email',
-        message: 'Email is invalid',
+        message: 'Correo invalido',
         control: loginForm.controls['email']
       }"
     ></ng-container>
@@ -122,7 +122,7 @@
       [ngTemplateOutlet]="formError"
       [ngTemplateOutletContext]="{
         validation: 'required',
-        message: 'Password is required',
+        message: 'Contrseña requerida',
         control: loginForm.controls['password']
       }"
     ></ng-container>
@@ -130,7 +130,7 @@
       [ngTemplateOutlet]="formError"
       [ngTemplateOutletContext]="{
         validation: 'minlength',
-        message: 'Password should have at least 3 symbols',
+        message: 'Constraseña requiere más de 8 caracterres',
         control: loginForm.controls['password']
       }"
     ></ng-container>
@@ -155,7 +155,7 @@
     >
       <ng-container *ngIf="isLoading$ | async">
         <span class="indicator-progress" [style.display]="'block'">
-          Please wait...
+          Esperefe Por favor...
           <span
             class="spinner-border spinner-border-sm align-middle ms-2"
           ></span>
