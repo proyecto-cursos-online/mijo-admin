@@ -46,6 +46,7 @@ export class CategoriesListComponent implements OnInit {
       console.log(resp)
       let index = this.CATEGORIES.findIndex((item: any) => item.id === resp.id);
       this.CATEGORIES[index] = resp;
+      window.location.reload();
     });
   }
   deleteCategory(CATEGORY: any) {
@@ -59,6 +60,7 @@ export class CategoriesListComponent implements OnInit {
         (item: any) => item.id === CATEGORY.id
       );
       this.CATEGORIES.splice(index, 1);
+      window.location.reload();
     });
   }
   openModalCreateCategory() {
