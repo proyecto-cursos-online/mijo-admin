@@ -3,10 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
+  production: false,
   appVersion: 'v8.0.38',
   USERDATA_KEY: 'authf649fc9a5f55',
-  isMockEnabled: true,
+  isMockEnabled: false,
   apiUrl: 'api',
   appThemeName: 'Metronic',
   appPurchaseUrl: 'https://1.envato.market/EA4JP',
