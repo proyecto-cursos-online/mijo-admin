@@ -12,8 +12,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class CategoriesDeleteComponent implements OnInit {
 
   @Input() category: any;
-  @Output() CategoryD:EventEmitter<any> = new EventEmitter();
-  name:any=null;
+  @Output() CategoryD: EventEmitter<any> = new EventEmitter();
+  name: any = null;
   isLoading: Observable<boolean>;
   constructor(
     public categoryService: CategoriesService,
@@ -26,24 +26,39 @@ export class CategoriesDeleteComponent implements OnInit {
     this.name = this.category.name;
   }
 
-  delete(){
+  delete() {
     this.categoryService.deleteCategory(this.category.id).pipe(
       catchError((error) => {
         console.error('Error:', error);
+        if (error && error.status === 422 && error.error && error.error.error) {
+          this.toaster.open({
+            text: error.error.error,
+            caption: 'Alerta',
+            type: 'warning',
+          });
+        } else {
+          this.toaster.open({
+            text: 'No se puede eliminar la categoria',
+            caption: 'Alerta',
+            type: 'warning',
+          });
+        }
         return of(null);
       }),
       finalize(() => {
         this.isLoading = of(false);
       })
     )
-    .subscribe((resp: any) => {
-      this.modal.dismiss();
-      this.CategoryD.emit(resp.user)
-      this.toaster.open({
-        text: 'Usuario Eliminado',
-        caption: 'Exitoso',
-        type: 'primary',
+      .subscribe((resp: any) => {
+      
+          this.modal.dismiss();
+          this.CategoryD.emit(resp.category)
+          this.toaster.open({
+            text: 'Categoria Eliminada',
+            caption: 'Exitoso',
+            type: 'primary',
+          });
+
       });
-    });
   }
 }

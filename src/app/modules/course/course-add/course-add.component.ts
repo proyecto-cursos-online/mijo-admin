@@ -44,6 +44,7 @@ export class CourseAddComponent implements OnInit {
       console.log(res.categories);
       this.subcategoria = res.subcategories;
       this.categoria = res.categories;
+      console.log(res.instructores);
       this.instructor = res.instructores;
     })
   }

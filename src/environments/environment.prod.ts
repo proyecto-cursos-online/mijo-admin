@@ -156,9 +156,9 @@ export const environment = {
       'thumbnail': './assets/media/demos/demo20.png'
     },
   },
-  URL_BACKEND: 'http://mijo-api.incadevs.com/',
-  URL_SERVICIOS: 'http://mijo-api.incadevs.com/api',
-  URL_FROTEND: 'http://mijo-admin.incadevs.com',
+  URL_BACKEND: 'http://127.0.0.1:8000/',
+  URL_SERVICIOS: 'http://127.0.0.1:8000/api',
+  URL_FROTEND: 'http://localhost:4200',
 };
 
 /*
