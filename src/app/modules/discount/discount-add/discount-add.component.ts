@@ -15,6 +15,7 @@ export class DiscountAddComponent implements OnInit {
   start_date:any = null;
   end_date:any = null;
   type_campaing:number = 1; // 1 es campaña normal, 2 es flash y 3 es banner
+  state:any = 1;
   // 
 
   categorie_id:any = null;
@@ -63,6 +64,7 @@ export class DiscountAddComponent implements OnInit {
       type_campaing: this.type_campaing,
       course_selected: this.course_selecteds,
       categorie_selected: this.categorie_selecteds,
+      state: this.state,
     };
     this.discountService.registerDiscount(data).subscribe((resp:any) => {
       console.log(resp);

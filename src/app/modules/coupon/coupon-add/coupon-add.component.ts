@@ -15,6 +15,7 @@ export class CouponAddComponent implements OnInit {
   type_count:number = 1;
   num_use:any = null;
   type_coupon:number = 1;
+  state:number = 1;
   // 
 
   categorie_id:any = null;
@@ -67,6 +68,7 @@ export class CouponAddComponent implements OnInit {
       type_coupon: this.type_coupon,
       course_selected: this.course_selecteds,
       categorie_selected: this.categorie_selecteds,
+      state: this.state,
     };
     this.couponService.registerCoupon(data).subscribe((resp:any) => {
       console.log(resp);
